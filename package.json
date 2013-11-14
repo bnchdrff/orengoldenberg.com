@@ -1,0 +1,36 @@
+{
+  "name": "orengoldenberg.com",
+  "version": "0.0.0",
+  "description": "a nice lil website for oren and his motion pictures",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bnchdrff/orengoldenberg.com.git"
+  },
+  "author": "Benjamin Chodoroff, Antonio Manzari",
+  "license": "GPLv2",
+  "dependencies": {
+    "superagent": "~0.15.7",
+    "express": "~3.4.3",
+    "director": "~1.2.0",
+    "handlebars": "~1.0.12",
+    "hbsfy": "~1.0.0",
+    "http-proxy": "~0.10.3",
+    "lodash": "~2.3.0",
+    "winston": "~0.7.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "browserify": "~2.35.0",
+    "grunt-browserify": "~1.2.9",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-nodemon": "~0.1.1",
+    "grunt-concurrent": "~0.4.1",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-node-inspector": "~0.1.1"
+  }
+}
