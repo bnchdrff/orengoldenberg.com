@@ -1,5 +1,4 @@
-var winston        = require('winston'),
-    director       = require('director'),
+var director       = require('director'),
     isServer       = typeof window === 'undefined',
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
@@ -61,9 +60,9 @@ Router.prototype.getRouteHandler = function(handler) {
           }
 
           if (isServer) {
-            router.handleServerRoute(html, routeContext.req, routeContext.res);
+            router.handleServerRoute(viewPath, html, routeContext.req, routeContext.res);
           } else {
-            router.handleClientRoute(html);
+            router.handleClientRoute(viewPath, html);
           }
         });
       }));
@@ -78,7 +77,7 @@ Router.prototype.getRouteHandler = function(handler) {
 };
 
 Router.prototype.handleErr = function(err) {
-  winston.log('error', err.message, {stack: err.stack});
+  console.error(err.message + err.stack);
 
   // this.next exists on server
   if (this.next) {
@@ -90,7 +89,7 @@ Router.prototype.handleErr = function(err) {
 
 Router.prototype.renderView = function(viewPath, data, callback) {
   try {
-    var template = require(viewsDir + '/' + viewPath),
+    var template = require(viewsDir + '/' + viewPath + '.hbs'),
         html     = template(data);
     callback(null, html);
   } catch(err) {
@@ -98,22 +97,30 @@ Router.prototype.renderView = function(viewPath, data, callback) {
   }
 };
 
-Router.prototype.wrapWithLayout = function(html, callback) {
+Router.prototype.wrapWithLayout = function(locals, callback) {
   try {
     var layout     = require(viewsDir + '/layout'),
-        layoutHtml = layout({body: html});
+        layoutHtml = layout(locals);
     callback(null, layoutHtml);
   } catch(err) {
     callback(err);
   }
 };
 
-Router.prototype.handleClientRoute = function(html) {
+Router.prototype.handleClientRoute = function(viewPath, html) {
   document.getElementById('view-container').innerHTML = html;
 };
 
-Router.prototype.handleServerRoute = function(html, req, res) {
-  this.wrapWithLayout(html, function(err, layoutHtml) {
+Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
+  var bootstrappedData = {
+  };
+
+  var locals = {
+    body: html,
+    bootstrappedData: JSON.stringify(bootstrappedData),
+  };
+
+  this.wrapWithLayout(locals, function(err, layoutHtml) {
     res.send(layoutHtml);
   });
 };
@@ -136,7 +143,9 @@ Router.prototype.middleware = function() {
 };
 
 // client-side
-Router.prototype.start = function() {
+Router.prototype.start = function(bootstrappedData) {
+  this.bootstrappedData = bootstrappedData;
+
   this.directorRouter.configure({
     html5history: true
   });
@@ -146,7 +155,7 @@ Router.prototype.start = function() {
         dataset = el && el.dataset;
 
     if (el
-        && el.nodeName === A
+        && el.nodeName === 'A'
         && (dataset.passThru == null || dataset.passThru === 'false')
        ) {
       this.directorRouter.setRoute(el.attributes.href.value);
@@ -155,4 +164,8 @@ Router.prototype.start = function() {
   }.bind(this), false);
 
   this.directorRouter.init();
+};
+
+Router.prototype.setRoute = function(route) {
+  this.directorRouter.setRoute(route);
 };

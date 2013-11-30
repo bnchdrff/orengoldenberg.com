@@ -20,8 +20,8 @@
     "handlebars": "~1.0.12",
     "hbsfy": "~1.0.0",
     "http-proxy": "~0.10.3",
-    "lodash": "~2.3.0",
-    "winston": "~0.7.2"
+    "jquery-browserify": "~1.8.1",
+    "lodash": "~2.3.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

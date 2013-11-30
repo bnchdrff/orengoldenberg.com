@@ -1,5 +1,4 @@
-var winston = require('winston'),
-    express = require('express'),
+var express = require('express'),
     app     = express(),
     port    = process.env.PORT || 7777,
     apiPort = process.env.API_PORT || 7778,
@@ -18,4 +17,4 @@ app.listen(port);
 
 api.listen(apiPort);
 
-winston.log('info', 'cool i am server', {apiPort: apiPort, port: port});
+console.log('cool i am server: ' + 'apiPort: ' + apiPort + ', port: ' + port);
