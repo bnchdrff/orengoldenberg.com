@@ -21,3 +21,5 @@ public/*.css
 
 .sass-cache
 *.sass
+
+assets/*.json
