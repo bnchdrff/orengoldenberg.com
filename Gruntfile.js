@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       main: {
         options: {
           debug: true,
-          transform: ['hbsfy'],
+          transform: ['uglifyify', 'hbsfy'],
           aliasMappings: [
             {
               cwd: 'app/views',
