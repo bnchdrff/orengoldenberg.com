@@ -40,6 +40,7 @@ module.exports = function(grunt) {
           'sassDir': 'assets/stylesheets',
           'cssDir': 'public',
           'require': ['compass-normalize', 'sass-globbing'],
+          'importPath': 'bower_components/foundation/scss',
           'bundleExec': true
         }
       }
@@ -64,7 +65,7 @@ module.exports = function(grunt) {
       },
       styles: {
         files: 'assets/stylesheets/**/*',
-        tasks: ['stylus'],
+        tasks: ['compass'],
         options: {
           interrupt: true
         }

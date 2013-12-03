@@ -1,0 +1,6 @@
+{
+  "name": "orengoldenberg.com",
+  "dependencies": {
+    "foundation": "~5.0.2"
+  }
+}
