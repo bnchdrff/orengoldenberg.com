@@ -1,5 +1,50 @@
-<h1>{{title}}</h1>
+<div id="single-video">
 
-<small>Date: {{created_at}}</small>
+	<iframe src="//player.vimeo.com/video/{{id}}" width="auto" 
+		height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+	</iframe>
+
+	<div id="single-video-info">
+		
+		<div id="single-video-info-text">
+		
+			<h1>{{title}}</h1>
+			
+			<!-- 
+			
+			Currently no description for most (maybe all?) videos. 
+			Title used as placeholder during development. 
+			Using a description may be a flaw in the design.
+			Talk to Oren about using descriptions.
+			
+			-->
+			
+			{{#if description}}
+				
+				<p>{{description}}</p> 
+			
+			{{/if}}
+			
+			<p>{{title}}</p>
+		
+		</div><!-- single-video-info-text -->
+		
+		<div id="single-video-info-links">
+		
+			<ul>
+			
+				<li><img id="email-icon" src="#" alt="email-icon" /> send a message</li>
+				
+				<li><img id="share-icon" src="#" alt="share-icon" /> share video</li>
+			
+			</ul>
+		
+		</div><!-- single-video-info-links -->
+		
+		
+	</div><!-- single-video-info -->
+	
+</div><!-- single-video -->
+
 
 <div class="debug">Rendered {{renderer}}-side</div>
