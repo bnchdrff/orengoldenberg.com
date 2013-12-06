@@ -23,3 +23,5 @@ public/*.css
 *.sass
 
 assets/*.json
+
+bower_components

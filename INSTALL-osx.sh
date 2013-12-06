@@ -16,6 +16,8 @@ nvm alias default v0.10.22
 
 npm install -g grunt-cli
 
+npm install -g bower
+
 brew install rbenv
 
 brew install ruby-build
@@ -48,8 +50,11 @@ rbenv rehash
 
 npm install
 
+
 #to run project
 
 cd orengoldenberg.com
+
+bower install
 
 grunt server
