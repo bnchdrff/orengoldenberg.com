@@ -11,3 +11,95 @@ $legacy-support-for-ie8: false;
   right: 23px;
   font-size: 80%;
 }
+
+
+
+/* ------------------------------
+- - - - - - - - - - - - - - - - - 
+CUSTOM STYLING by ANTONIO: BEGIN!
+- - - - - - - - - - - - - - - - - 
+------------------------------ */
+
+body {
+  background: #f8f7f5;
+  color: #90938b;
+}
+
+.panel {
+	background-color: #dfdddd;
+}
+
+/* ------------------------------
+
+t y p o g r a p h y
+
+------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: lighter; }
+
+h1 {
+  font-size: 2.125rem; }
+
+h2 {
+  font-size: 1.6875rem; }
+
+h3 {
+  font-size: 1.375rem; }
+
+h4 {
+  font-size: 1.125rem; }
+
+h5 {
+  font-size: 1.125rem; }
+
+h6 {
+  font-size: 1rem; }
+  
+ul {
+	list-style-type: none;
+}
+
+
+/* ------------------------------
+
+v i d e o s
+
+------------------------------ */
+
+
+.vid-thumbs {
+	margin: 0 0 20px 0;
+}
+
+
+
+
+/* ------------------------------
+
+s i n g l e    v i d e o
+
+------------------------------ */
+
+#single-video-info-box {
+	margin: 1em 0 0 0;
+	border: none;
+}
+
+#single-video-info-box-text {
+	border-right: 2px solid #bbb;
+}
+
+#single-video-info-box-text > h2 {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+
+
+
+/* ------------------------------
+- - - - - - - - - - - - - - - - - 
+CUSTOM STYLING by ANTONIO: END!
+- - - - - - - - - - - - - - - - - 
+------------------------------ */
