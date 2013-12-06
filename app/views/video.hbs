@@ -1,50 +1,54 @@
-<div id="single-video">
+<div class="row">
 
-	<iframe src="//player.vimeo.com/video/{{id}}" width="auto" 
-		height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
-	</iframe>
+	<div id="single-video" class="small-12 large-8 columns">
 
-	<div id="single-video-info">
+		<iframe src="//player.vimeo.com/video/{{id}}" width="100%" 
+			height="360px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+		</iframe>
+
+		<div id="single-video-info-box" class="row panel">
 		
-		<div id="single-video-info-text">
+			<div id="single-video-info-box-text" class="small-12 large-8 columns">
 		
-			<h1>{{title}}</h1>
+				<h2>{{title}}</h2>
 			
-			<!-- 
+				<!-- 
 			
-			Currently no description for most (maybe all?) videos. 
-			Title used as placeholder during development. 
-			Using a description may be a flaw in the design.
-			Talk to Oren about using descriptions.
+				Currently no description for most (maybe all?) videos. 
+				Title used as placeholder during development. 
+				Using a description may be a flaw in the design.
+				Talk to Oren about using descriptions.
 			
-			-->
+				-->
 			
-			{{#if description}}
+				{{#if description}}
 				
-				<p>{{description}}</p> 
+					<p>{{description}}</p> 
 			
-			{{/if}}
+				{{/if}}
 			
-			<p>{{title}}</p>
+				<p>{{title}}</p>
 		
-		</div><!-- single-video-info-text -->
+			</div><!-- single-video-info-text -->
 		
-		<div id="single-video-info-links">
+			<div id="single-video-info-links" class="small-12 large-4 columns">
 		
-			<ul>
+				<ul>
 			
-				<li><img id="email-icon" src="#" alt="email-icon" /> send a message</li>
+					<li><a href="#">SEND A MESSAGE</a></li>
 				
-				<li><img id="share-icon" src="#" alt="share-icon" /> share video</li>
+					<li><a href="#">SHARE VIDEO</a></li>
 			
-			</ul>
+				</ul>
 		
-		</div><!-- single-video-info-links -->
+			</div><!-- single-video-info-links -->
 		
 		
-	</div><!-- single-video-info -->
+		</div><!-- single-video-info -->
 	
-</div><!-- single-video -->
+	</div><!-- single-video -->
+
+</div>
 
 
 <div class="debug">Rendered {{renderer}}-side</div>
