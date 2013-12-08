@@ -152,7 +152,15 @@ Router.prototype.start = function(bootstrappedData) {
 
   document.addEventListener('click', function(e) {
     var el      = e.target,
+        eltest  = el,
         dataset = el && el.dataset;
+
+    while (eltest.parentNode && el.tagName !== 'A') {
+      eltest = eltest.parentNode;
+      if (eltest.tagName === 'A') {
+        el = eltest;
+      }
+    }
 
     if (el
         && el.nodeName === 'A'
@@ -161,7 +169,7 @@ Router.prototype.start = function(bootstrappedData) {
       this.directorRouter.setRoute(el.attributes.href.value);
       e.preventDefault();
     }
-  }.bind(this), false);
+  }.bind(this), true);
 
   this.directorRouter.init();
 };
