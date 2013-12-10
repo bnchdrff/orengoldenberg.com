@@ -53,13 +53,25 @@ module.exports = function(grunt) {
     },
 
     compass: {
-      main: {
+      devel: {
         options: {
           'sassDir': 'assets/stylesheets',
           'cssDir': 'public',
           'require': ['compass-normalize', 'sass-globbing'],
           'importPath': 'bower_components/foundation/scss',
-          'bundleExec': true
+          'bundleExec': true,
+          'environment': 'development'
+        }
+      },
+      prod: {
+        options: {
+          'sassDir': 'assets/stylesheets',
+          'cssDir': 'public',
+          'require': ['compass-normalize', 'sass-globbing'],
+          'importPath': 'bower_components/foundation/scss',
+          'bundleExec': true,
+          'environment': 'production',
+          'outputStyle': 'compressed'
         }
       }
     },
@@ -76,14 +88,14 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: 'app/**/*',
-        tasks: ['browserify:debug'],
+        tasks: ['browserify:devel'],
         options: {
           interrupt: true
         }
       },
       styles: {
         files: 'assets/stylesheets/**/*',
-        tasks: ['compass'],
+        tasks: ['compass:devel'],
         options: {
           interrupt: true
         }
@@ -119,8 +131,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-node-inspector');
 
-  grunt.registerTask('compile', ['curl', 'browserify:prod', 'compass']);
-  grunt.registerTask('compile:devel', ['browserify:devel', 'compass']);
+  grunt.registerTask('compile', ['curl', 'browserify:prod', 'compass:prod']);
+  grunt.registerTask('compile:devel', ['browserify:devel', 'compass:devel']);
   grunt.registerTask('default', ['compile']);
   grunt.registerTask('server', ['compile', 'concurrent']);
   grunt.registerTask('server:debug', ['compile:devel', 'concurrent:debug']);
