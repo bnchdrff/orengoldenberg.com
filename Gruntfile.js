@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     },
 
     browserify: {
-      main: {
+      prod: {
         options: {
           debug: true,
           transform: ['uglifyify', 'hbsfy'],
@@ -18,9 +18,27 @@ module.exports = function(grunt) {
               src: ['**/*'],
               dest: 'app/views',
               rename: function(cwd, src) {
-                // Little hack to ensure that file extension is preserved.
-                // This allows us to have '.hbs' and '.js' files in same
-                // directory with same basename.
+                var ext = src.split('.').pop();
+                return cwd + '/' + src + '.' + ext;
+              }
+            }
+          ],
+          alias: ['jquery-browserify:jquery']
+        },
+        files: {
+          'public/scripts.js': 'app/entry.js',
+        },
+      },
+      devel: {
+        options: {
+          debug: true,
+          transform: ['hbsfy'],
+          aliasMappings: [
+            {
+              cwd: 'app/views',
+              src: ['**/*'],
+              dest: 'app/views',
+              rename: function(cwd, src) {
                 var ext = src.split('.').pop();
                 return cwd + '/' + src + '.' + ext;
               }
@@ -58,7 +76,7 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: 'app/**/*',
-        tasks: ['browserify'],
+        tasks: ['browserify:debug'],
         options: {
           interrupt: true
         }
@@ -74,7 +92,7 @@ module.exports = function(grunt) {
 
     concurrent: {
       main: {
-        tasks: ['nodemon', 'watch'],
+        tasks: ['nodemon'],
         options: {
           logConcurrentOutput: true
         }
@@ -101,9 +119,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-node-inspector');
 
-  grunt.registerTask('compile', ['curl', 'browserify', 'compass']);
+  grunt.registerTask('compile', ['curl', 'browserify:prod', 'compass']);
+  grunt.registerTask('compile:devel', ['browserify:devel', 'compass']);
   grunt.registerTask('default', ['compile']);
   grunt.registerTask('server', ['compile', 'concurrent']);
-  grunt.registerTask('server:debug', ['compile', 'concurrent:debug']);
+  grunt.registerTask('server:debug', ['compile:devel', 'concurrent:debug']);
 
 };
