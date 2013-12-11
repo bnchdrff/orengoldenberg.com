@@ -58,7 +58,7 @@ module.exports = function(grunt) {
           'sassDir': 'assets/stylesheets',
           'cssDir': 'public',
           'require': ['compass-normalize', 'sass-globbing'],
-          'importPath': 'bower_components/foundation/scss',
+          'importPath': ['bower_components/foundation/scss', 'bower_components/font-awesome/scss'],
           'bundleExec': true,
           'environment': 'development'
         }
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
           'sassDir': 'assets/stylesheets',
           'cssDir': 'public',
           'require': ['compass-normalize', 'sass-globbing'],
-          'importPath': 'bower_components/foundation/scss',
+          'importPath': ['bower_components/foundation/scss', 'bower_components/font-awesome/scss'],
           'bundleExec': true,
           'environment': 'production',
           'outputStyle': 'compressed'

@@ -4,6 +4,7 @@ $legacy-support-for-ie7: false;
 $legacy-support-for-ie8: false;
 @import "normalize";
 @import "foundation";
+@import "font-awesome";
 
 .debug {
   position: fixed;
@@ -71,14 +72,29 @@ ul {
 	list-style-type: none;
 }
 
+strong {
+	font-weight: 600;
+}
+
+.side-nav { font-family: 'Raleway', sans-serif; }
+
 /* ------------------------------
 
 n a v    m e n u
 
 ------------------------------ */
 
-nav ul {
-	margin-left: 0;
+nav {
+	margin: 2rem 0 0 0;
+}
+
+.side-nav li {
+	line-height: 2.5rem;
+}
+
+.side-nav li {
+	font-size: 2.125rem;
+	font-weight: 300;
 }
 
 
@@ -95,6 +111,20 @@ v i d e o s
 	margin: 0 0 1rem 0;
 }
 
+.vimeo-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 
 
 /* ------------------------------
@@ -103,9 +133,11 @@ s i n g l e    v i d e o
 
 ------------------------------ */
 
+
 #single-video-info-box {
 	margin: 1rem 0 0 0;
 	border: none;
+	position: relative;
 }
 
 #single-video-info-box-text {
@@ -117,7 +149,65 @@ s i n g l e    v i d e o
 	font-weight: bold;
 }
 
+#social-links {
+	margin-top: 2rem;
+}
 
+
+#social-links li {
+	letter-spacing: .05rem;
+	margin-bottom: .5rem;
+}
+
+.social-icons {
+	margin-right: 1rem;
+}
+
+
+/* ------------------------------
+
+m e d i a    q u e r i e s
+
+------------------------------ */
+
+
+@media #{$small-up} {
+
+	#header {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.side-nav li, .side-nav li a {
+		display: inline
+	}
+	
+	.side-nav li:nth-child(-n + 2) {
+		margin: 0 1rem 0 0;
+		padding: 0 1rem 0 0;
+		border-right: 1px solid #bbb;
+	}
+
+}
+
+@media #{$large-up} {
+
+	#header {
+		text-align: left;
+	}
+
+	.side-nav li, .side-nav li a{
+		display: block;
+	}
+	
+	.side-nav li:nth-child(-n + 2) {
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		border-right: none;
+	}
+
+
+}
 
 
 /* ------------------------------
