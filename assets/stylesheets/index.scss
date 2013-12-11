@@ -20,13 +20,22 @@ CUSTOM STYLING by ANTONIO: BEGIN!
 - - - - - - - - - - - - - - - - - 
 ------------------------------ */
 
+
 body {
   background: #f8f7f5;
   color: #90938b;
 }
 
+.row {
+	max-width: 1200px;
+}
+
 .panel {
 	background-color: #dfdddd;
+}
+
+#view-container {
+	margin-top: 1.5rem;
 }
 
 /* ------------------------------
@@ -34,6 +43,8 @@ body {
 t y p o g r a p h y
 
 ------------------------------ */
+
+body { font-family: 'Raleway', sans-serif; }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: lighter; }
@@ -60,6 +71,18 @@ ul {
 	list-style-type: none;
 }
 
+/* ------------------------------
+
+n a v    m e n u
+
+------------------------------ */
+
+nav ul {
+	margin-left: 0;
+}
+
+
+
 
 /* ------------------------------
 
@@ -69,9 +92,8 @@ v i d e o s
 
 
 .vid-thumbs {
-	margin: 0 0 20px 0;
+	margin: 0 0 1rem 0;
 }
-
 
 
 
@@ -82,7 +104,7 @@ s i n g l e    v i d e o
 ------------------------------ */
 
 #single-video-info-box {
-	margin: 1em 0 0 0;
+	margin: 1rem 0 0 0;
 	border: none;
 }
 
