@@ -27,6 +27,10 @@ body {
   color: #90938b;
 }
 
+#main-wrapper {
+	margin-top: 2rem;
+}
+
 .row {
 	max-width: 1200px;
 }
@@ -35,9 +39,6 @@ body {
 	background-color: #dfdddd;
 }
 
-#view-container {
-	margin-top: 1.5rem;
-}
 
 /* ------------------------------
 
@@ -70,6 +71,7 @@ h6 {
   
 ul {
 	list-style-type: none;
+	margin: 0;
 }
 
 strong {
@@ -78,9 +80,10 @@ strong {
 
 .side-nav { font-family: 'Raleway', sans-serif; }
 
+
 /* ------------------------------
 
-n a v    m e n u
+n a v    m e n u    +    heading
 
 ------------------------------ */
 
@@ -97,6 +100,10 @@ nav {
 	font-weight: 300;
 }
 
+#header {
+	margin-top: -.8rem;
+}
+
 
 
 
@@ -109,6 +116,13 @@ v i d e o s
 
 .vid-thumbs {
 	margin: 0 0 1rem 0;
+	text-align: center;
+}
+
+li img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .vimeo-video {
@@ -138,10 +152,6 @@ s i n g l e    v i d e o
 	margin: 1rem 0 0 0;
 	border: none;
 	position: relative;
-}
-
-#single-video-info-box-text {
-	border-right: 2px solid #bbb;
 }
 
 #single-video-info-box-text > h2 {
@@ -187,8 +197,18 @@ m e d i a    q u e r i e s
 		padding: 0 1rem 0 0;
 		border-right: 1px solid #bbb;
 	}
+	
+	#view-container {
+		margin-top: 1.5rem;
+	}
 
 }
+
+
+@media #{$medium-only} {
+	
+}
+
 
 @media #{$large-up} {
 
@@ -204,6 +224,14 @@ m e d i a    q u e r i e s
 		margin: 0 0 0 0;
 		padding: 0 0 0 0;
 		border-right: none;
+	}
+	
+	#single-video-info-box-text {
+		border-right: 2px solid #bbb;
+	}
+	
+	#view-container {
+		margin: 0;
 	}
 
 
