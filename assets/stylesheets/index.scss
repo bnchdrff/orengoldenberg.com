@@ -69,6 +69,8 @@ h5 {
 h6 {
   font-size: 1rem; }
   
+a { color: #888; }
+  
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -98,6 +100,14 @@ nav {
 .side-nav li {
 	font-size: 2.125rem;
 	font-weight: 300;
+}
+
+.side-nav li a {
+	color: #888;
+}
+
+.side-nav li a:hover {
+	color: #222;
 }
 
 #header {
@@ -154,6 +164,10 @@ s i n g l e    v i d e o
 	position: relative;
 }
 
+#single-video-info-box-text {
+	padding-right: 2rem;
+}
+
 #single-video-info-box-text > h2 {
 	font-size: 1rem;
 	font-weight: bold;
@@ -161,6 +175,7 @@ s i n g l e    v i d e o
 
 #social-links {
 	margin-top: 2rem;
+	padding-left: 2rem;
 }
 
 
@@ -170,7 +185,7 @@ s i n g l e    v i d e o
 }
 
 .social-icons {
-	margin-right: 1rem;
+	margin-right: .7rem;
 }
 
 
@@ -227,7 +242,7 @@ m e d i a    q u e r i e s
 	}
 	
 	#single-video-info-box-text {
-		border-right: 2px solid #bbb;
+		border-right: 3px solid #ccc;
 	}
 	
 	#view-container {
