@@ -3,6 +3,7 @@ var director       = require('director'),
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
     DirectorRouter = isServer ? director.http.Router : director.Router,
+    videos         = (process.env.NODE_ENV == 'production') ? require('../assets/videos.json') : require('../assets/videos.sample.json'),
     firstRender    = true;
 
 require('./helpers')(Handlebars).register();
@@ -112,8 +113,7 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
-  var bootstrappedData = {
-  };
+  var bootstrappedData = videos;
 
   var locals = {
     body: html,
