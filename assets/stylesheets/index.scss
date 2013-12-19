@@ -5,6 +5,7 @@ $legacy-support-for-ie8: false;
 @import "normalize";
 @import "foundation";
 @import "font-awesome";
+@import "offcanvas";
 
 .debug {
   position: fixed;
@@ -38,6 +39,7 @@ body {
 .panel {
 	background-color: #dfdddd;
 }
+
 
 
 /* ------------------------------
@@ -110,7 +112,7 @@ nav {
 	color: #222;
 }
 
-#header {
+#main-side-bar {
 	margin-top: -.8rem;
 }
 
@@ -198,7 +200,7 @@ m e d i a    q u e r i e s
 
 @media #{$small-up} {
 
-	#header {
+	#main-side-bar {
 		text-align: center;
 		margin-bottom: 2rem;
 	}
@@ -227,7 +229,7 @@ m e d i a    q u e r i e s
 
 @media #{$large-up} {
 
-	#header {
+	#main-side-bar {
 		text-align: left;
 	}
 
