@@ -7,40 +7,83 @@
 		<link href="/index.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,700,600' rel='stylesheet' type='text/css'>
 	</head>
-<body>
+
+<body id="page" class="off-canvas hide-extras">
 
 
-<div id="main-wrapper" class="row">
-	
-	<div id="header" class="small-12 large-4 columns">
+<div id="main-wrapper" class="container">
 
-		<h1>OREN GOLDENBERG</h1>
-
-		<nav>
-
-			<ul class="side-nav">
-
-				<li><a href="/videos">WORK</a></li>
+	<div class="row">
 		
-				<li><a href="#">ABOUT</a></li>
+		<div class="show-for-small">
 		
-				<li><a href="#">CONTACT</a></li>
-
-			</ul>
-
-		</nav>
-
-	</div><!-- heading and nav -->
+			<h1>OREN GOLDENBERG</h1>
 	
-	<div class="container" id="view-container">
+			<nav>
+		
+				<ul class="side-nav">
+					<li><a href="#offcanvas-sidebar">WORK</a></li>
+					<li><a href="#offcanvas-sidebar">ABOUT</a></li>
+					<li><a href="#offcanvas-sidebar">CONTACT</a></li>
+				</ul>
 
+			</nav>
+		
+		</div>
+		
+	
+	
+	
+		<section role="main">
+		
+			<div class="row">
 
+				<div id="main-side-bar" class="hide-for-small small-12 large-4 columns">
 
-	{{{body}}}
+					<h1>OREN GOLDENBERG</h1>
 
-	</div>
+					<nav>
 
-</div>
+						<ul class="side-nav">
+							<li><a href="/videos">WORK</a></li>
+							<li><a href="#">ABOUT</a></li>
+							<li><a href="#">CONTACT</a></li>
+						</ul>
+
+					</nav>
+
+				</div><!-- heading and nav -->
+		
+				<div class="small-12 large-8 columns" id="view-container">
+
+					{{{body}}}
+
+				</div>
+			
+			</div>
+	
+		</section>
+		
+		
+		<section id="offcanvas-sidebar" role="complementary">
+			
+			<nav id="sideMenu" role="navigation">
+    		
+    			<ul id="sideMainNav" class="nav-bar">
+    				<li><a href="">One</a></li>
+    				<li><a href="">Two</a></li>
+    				<li><a href="">Three</a></li>
+    				<li><a href="">Four</a></li>
+    			</ul>
+    		
+    		</nav>
+  		
+  		</section>	
+  		
+	
+	</div><!-- ROW for main-nav and vid content -->
+
+</div><!-- wrapper -->
 
 
 <script>
