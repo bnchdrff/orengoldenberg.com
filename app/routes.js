@@ -28,4 +28,16 @@ module.exports = function(match) {
     });
   });
 
+  match('/pages/:page', function(page, callback) {
+    console.log('pages/' + page + ' hit');
+    apiClient.get('/pages/' + page + '.json', function(err, res) {
+      if (err) {
+        return callback(err);
+      }
+      console.log('res'); console.log(res.body.meta);
+      var page = res.body;
+      callback(null, 'page', page);
+    });
+  });
+
 };
