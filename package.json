@@ -21,7 +21,8 @@
     "hbsfy": "~1.0.0",
     "http-proxy": "~0.10.3",
     "jquery-browserify": "~1.8.1",
-    "lodash": "~2.3.0"
+    "lodash": "~2.3.0",
+    "node-flatpages": "~0.1.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
