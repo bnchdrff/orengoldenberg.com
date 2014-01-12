@@ -5,6 +5,7 @@ $legacy-support-for-ie8: false;
 @import "normalize";
 @import "foundation";
 @import "font-awesome";
+@import "offcanvas";
 
 .debug {
   position: fixed;
@@ -27,6 +28,10 @@ body {
   color: #90938b;
 }
 
+#main-wrapper {
+	margin-top: 2rem;
+}
+
 .row {
 	max-width: 1200px;
 }
@@ -35,9 +40,7 @@ body {
 	background-color: #dfdddd;
 }
 
-#view-container {
-	margin-top: 1.5rem;
-}
+
 
 /* ------------------------------
 
@@ -68,8 +71,11 @@ h5 {
 h6 {
   font-size: 1rem; }
   
+a { color: #888; }
+  
 ul {
 	list-style-type: none;
+	margin: 0;
 }
 
 strong {
@@ -78,9 +84,10 @@ strong {
 
 .side-nav { font-family: 'Raleway', sans-serif; }
 
+
 /* ------------------------------
 
-n a v    m e n u
+n a v    m e n u    +    heading
 
 ------------------------------ */
 
@@ -97,6 +104,18 @@ nav {
 	font-weight: 300;
 }
 
+.side-nav li a {
+	color: #888;
+}
+
+.side-nav li a:hover {
+	color: #222;
+}
+
+#main-side-bar {
+	margin-top: -.8rem;
+}
+
 
 
 
@@ -109,6 +128,13 @@ v i d e o s
 
 .vid-thumbs {
 	margin: 0 0 1rem 0;
+	text-align: center;
+}
+
+li img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .vimeo-video {
@@ -141,7 +167,7 @@ s i n g l e    v i d e o
 }
 
 #single-video-info-box-text {
-	border-right: 2px solid #bbb;
+	padding-right: 2rem;
 }
 
 #single-video-info-box-text > h2 {
@@ -151,6 +177,7 @@ s i n g l e    v i d e o
 
 #social-links {
 	margin-top: 2rem;
+	padding-left: 2rem;
 }
 
 
@@ -160,7 +187,7 @@ s i n g l e    v i d e o
 }
 
 .social-icons {
-	margin-right: 1rem;
+	margin-right: .7rem;
 }
 
 
@@ -173,7 +200,7 @@ m e d i a    q u e r i e s
 
 @media #{$small-up} {
 
-	#header {
+	#main-side-bar {
 		text-align: center;
 		margin-bottom: 2rem;
 	}
@@ -187,12 +214,22 @@ m e d i a    q u e r i e s
 		padding: 0 1rem 0 0;
 		border-right: 1px solid #bbb;
 	}
+	
+	#view-container {
+		margin-top: 1.5rem;
+	}
 
 }
 
+
+@media #{$medium-only} {
+	
+}
+
+
 @media #{$large-up} {
 
-	#header {
+	#main-side-bar {
 		text-align: left;
 	}
 
@@ -204,6 +241,14 @@ m e d i a    q u e r i e s
 		margin: 0 0 0 0;
 		padding: 0 0 0 0;
 		border-right: none;
+	}
+	
+	#single-video-info-box-text {
+		border-right: 3px solid #ccc;
+	}
+	
+	#view-container {
+		margin: 0;
 	}
 
 
