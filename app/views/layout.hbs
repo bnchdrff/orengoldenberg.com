@@ -3,82 +3,50 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oren Goldenberg sdfs</title>
+    <title>Oren Goldenberg</title>
     <link href="/index.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,700,600' rel='stylesheet' type='text/css'>
     <script src="/bower/foundation/js/vendor/custom.modernizr.js"></script>
   </head>
-
 <body>
-
-
 <div id="main-wrapper">
-
   <div class="row">
-
     <section role="main">
-
       <div class="row">
-
-        <div id="main-side-bar" class="hide-for-small small-12 large-4 columns">
-
+        <div id="main-side-bar" class="small-12 large-4 columns">
           <h1>OREN GOLDENBERG</h1>
-
           <nav>
-
             <ul>
               <li><a data-pass-thru="true" class="toggle-menu" href="/videos">WORK</a></li>
               <li><a href="/pages/about">ABOUT</a></li>
               <li><a href="/pages/contact">CONTACT</a></li>
             </ul>
-
           </nav>
-
         </div><!-- heading and nav -->
-
         <div class="small-12 large-8 columns" id="view-container">
-
           {{{body}}}
-
         </div>
-
       </div>
-
     </section>
-
-
     <section role="complementary">
-
       <nav role="navigation">
-
           <ul class="nav-bar">
             <li><a href="/videos">One</a></li>
             <li><a href="/videos">Two</a></li>
             <li><a href="/videos">Three</a></li>
             <li><a href="/videos">Four</a></li>
           </ul>
-
         </nav>
-
     </section>
-
-
   </div><!-- ROW for main-nav and vid content -->
-
 </div><!-- wrapper -->
-
-
 <script>
 window.bootstrappedData = {{{bootstrappedData}}};
 </script>
-
 <script src="/bower/foundation/js/vendor/jquery.js"></script>
 <script src="/scripts.js"></script>
-
 <script>
-
   $(document).ready(function() {
-
     $('.toggle-menu').on('click', function(e) {
       e.preventDefault();
       $('body').toggleClass('active');
@@ -86,14 +54,7 @@ window.bootstrappedData = {{{bootstrappedData}}};
     $('a:not(.toggle-menu)').on('click', function(e) {
       $('body').removeClass('active');
     });
-
   });
-
 </script>
-
-
-
-
-
 </body>
 </html>
