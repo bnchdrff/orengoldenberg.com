@@ -1,55 +1,55 @@
 
-	<div id="single-video" class="small-12 large-8 columns">
-		
-		<div class="vimeo-video">
-			<iframe src="//player.vimeo.com/video/{{id}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
-			</iframe>
-		</div>
+  <div id="single-video" class=" ">
 
-		<div id="single-video-info-box" class="row panel">
-		
-			<div id="single-video-info-box-text" class="small-12 large-8 columns">
-		
-				<h2>{{title}}</h2>
-			
-				<!-- 
-			
-				Currently no description for most videos. 
-				If no description, #unless code will display placeholder text.
-			
-				Using a description may be a flaw in the design?
-				Talk to Oren about using descriptions.
-			
-				-->
-				
-				<p>{{description}}</p>
-			
-				{{#unless description}}
-				
-					<p>Lorem ipsum dolor sit amet, omnis partem qui id, summo vituperata vis id. Meis suscipit delectus sed et, urbanitas complectitur concludaturque duo ne.</p> 
-			
-				{{/unless}}
-			
-				
-		
-			</div><!-- single-video-info-text -->
-		
-			<div id="single-video-info-links" class="small-12 large-4 columns">
-		
-				<ul id="social-links">
-			
-					<li><a href="#"><i class="fa fa-envelope social-icons"></i><strong> SEND A MESSAGE</strong></a></li>
-				
-					<li><a href="#"><i class="fa fa-share social-icons"></i><strong> SHARE VIDEO</strong></a></li>
-			
-				</ul>
-		
-			</div><!-- single-video-info-links -->
-		
-		
-		</div><!-- single-video-info -->
-	
-	</div><!-- single-video -->
+    <div class="vimeo-video">
+      <iframe src="//player.vimeo.com/video/{{id}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
+    </div>
+
+    <div id="single-video-info-box" class="row panel">
+
+      <div id="single-video-info-box-text" class="small-12 large-7 columns">
+
+        <h2>{{title}}</h2>
+
+        <!--
+
+        Currently no description for most videos.
+        If no description, #unless code will display placeholder text.
+
+        Using a description may be a flaw in the design?
+        Talk to Oren about using descriptions.
+
+        -->
+
+        <p>{{description}}</p>
+
+        {{#unless description}}
+
+          <p>Lorem ipsum dolor sit amet, omnis partem qui id, summo vituperata vis id. Meis suscipit delectus sed et, urbanitas complectitur concludaturque duo ne.</p>
+
+        {{/unless}}
+
+
+
+      </div><!-- single-video-info-text -->
+
+      <div id="single-video-info-links" class="small-12 large-5 columns">
+
+        <ul id="social-links">
+
+          <li><a href="#"><i class="fa fa-envelope social-icons"></i><strong> SEND A MESSAGE</strong></a></li>
+
+          <li><a href="#"><i class="fa fa-share social-icons"></i><strong> SHARE VIDEO</strong></a></li>
+
+        </ul>
+
+      </div><!-- single-video-info-links -->
+
+
+    </div><!-- single-video-info -->
+
+  </div><!-- single-video -->
 
 
 
