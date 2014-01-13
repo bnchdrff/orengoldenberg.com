@@ -9,7 +9,7 @@ var express = require('express'),
 
 app.use(express.static(__dirname + '/public'));
 
-app.use('/fonts', express.static(__dirname + '/bower_components/font-awesome/fonts'));
+app.use('/bower', express.static(__dirname + '/bower_components'));
 
 app.use(router.middleware());
 

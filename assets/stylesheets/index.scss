@@ -2,10 +2,10 @@
 $legacy-support-for-ie6: false;
 $legacy-support-for-ie7: false;
 $legacy-support-for-ie8: false;
+$fa-font-path: "/bower/font-awesome/fonts";
 @import "normalize";
 @import "foundation";
 @import "font-awesome";
-@import "offcanvas";
 
 .debug {
   position: fixed;
