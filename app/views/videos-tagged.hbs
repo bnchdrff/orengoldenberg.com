@@ -1,0 +1,23 @@
+<div class=" ">
+
+  <ul>
+
+    {{#each videos}}
+
+      <li class="small-6 medium-4 large-4 columns vid-thumbs">
+
+        <a href="/videos/{{id}}">
+
+          <img src="{{thumbnail_medium}}" alt="Video Thumbnail Large" />
+
+        </a>
+
+      </li>
+
+    {{/each}}
+
+  </ul>
+
+</div>
+
+<div class="debug">Rendered {{renderer}}-side</div>

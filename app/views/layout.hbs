@@ -27,10 +27,9 @@
         <ul class="nav-bar">
           <li><a href="/videos">WORK</a>
             <ul>
-              <li><a href="/videos">One</a></li>
-              <li><a href="/videos">Two</a></li>
-              <li><a href="/videos">Three</a></li>
-              <li><a href="/videos">Four</a></li>
+              {{#each tags}}
+                <li><a href="/videos-tagged/{{this}}">{{this}}</a></li>
+              {{/each}}
             </ul>
           </li>
           <li><a href="/pages/about">ABOUT</a></li>

@@ -28,6 +28,17 @@ module.exports = function(match) {
     });
   });
 
+  match('/videos-tagged/:tag', function(tag, callback) {
+    console.log('videos-tagged/' + tag + ' hit');
+    apiClient.get('/videos-tagged/' + tag + '.json', function(err, res) {
+      if (err) {
+        return callback(err);
+      }
+      var videos = res.body;
+      callback(null, 'videos-tagged', {videos: videos});
+    });
+  });
+
   match('/pages/:page', function(page, callback) {
     console.log('pages/' + page + ' hit');
     apiClient.get('/pages/' + page + '.json', function(err, res) {

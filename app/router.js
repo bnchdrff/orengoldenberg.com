@@ -1,9 +1,13 @@
 var director       = require('director'),
     isServer       = typeof window === 'undefined',
+    _              = require('lodash/dist/lodash.underscore'),
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
     DirectorRouter = isServer ? director.http.Router : director.Router,
     videos         = (process.env.NODE_ENV == 'production') ? require('../assets/videos.json') : require('../assets/videos.sample.json'),
+    tags           = _.reduce(videos, function(tags, video) {
+                       return _.union(video.tags.split(', '), tags);
+                     }),
     firstRender    = true;
 
 require('./helpers')(Handlebars).register();
@@ -117,6 +121,7 @@ Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
 
   var locals = {
     body: html,
+    tags: tags,
     bootstrappedData: JSON.stringify(bootstrappedData),
   };
 
