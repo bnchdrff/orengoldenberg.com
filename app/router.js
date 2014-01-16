@@ -156,22 +156,29 @@ Router.prototype.start = function(bootstrappedData) {
   });
 
   document.addEventListener('click', function(e) {
-    var el      = e.target,
-        eltest  = el,
-        dataset = el && el.dataset;
+    var el       = e.target,
+        eltest   = el,
+        passThru = false;
 
     while (eltest.parentNode && el.tagName !== 'A') {
       eltest = eltest.parentNode;
       if (eltest.tagName === 'A') {
         el = eltest;
+        passThru = (el && el.dataset && el.dataset.passThru == 'true') ? true : false;
       }
     }
 
     if (el
         && el.nodeName === 'A'
-        && (dataset.passThru == null || dataset.passThru === 'false')
+        && (passThru == false)
        ) {
       this.directorRouter.setRoute(el.attributes.href.value);
+      e.preventDefault();
+    }
+    if (el
+        && el.nodeName === 'A'
+        && (passThru == true)
+       ) {
       e.preventDefault();
     }
   }.bind(this), true);
