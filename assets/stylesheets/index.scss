@@ -112,6 +112,12 @@ n a v    m e n u    +    heading
 .nav-bar > li > ul > li {
     font-size: 1.5rem;
     line-height: 1.2em;
+    padding: 10px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.nav-bar > li > ul > li:last-child {
+    border-bottom: none;
 }
 
 .nav-bar > li > ul > li > a {
@@ -126,7 +132,6 @@ n a v    m e n u    +    heading
 .nav-bar > li:hover > ul {
    display: block;
 }
-
 
 .large-screen-logo {
 	margin: 0 0 1.5rem 0;
