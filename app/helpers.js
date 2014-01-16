@@ -2,6 +2,9 @@ module.exports = function(Handlebars) {
   var helpers = {
     log: function(obj) {
       console.log(obj);
+    },
+    decode: function(uricomponent) {
+      return decodeURIComponent(uricomponent);
     }
   };
   function register() {

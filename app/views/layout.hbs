@@ -28,7 +28,7 @@
           <li><a href="/videos">WORK</a>
             <ul>
               {{#each tags}}
-                <li><a href="/videos-tagged/{{this}}">{{this}}</a></li>
+                <li><a href="/videos-tagged/{{this}}">{{decode this}}</a></li>
               {{/each}}
             </ul>
           </li>

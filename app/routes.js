@@ -28,7 +28,7 @@ module.exports = function(match) {
     });
   });
 
-  match('/videos-tagged/:tag', function(tag, callback) {
+  match('/videos-tagged/(.*)', function(tag, callback) {
     console.log('videos-tagged/' + tag + ' hit');
     apiClient.get('/videos-tagged/' + tag + '.json', function(err, res) {
       if (err) {

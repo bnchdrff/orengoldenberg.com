@@ -4,10 +4,10 @@ var director       = require('director'),
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
     DirectorRouter = isServer ? director.http.Router : director.Router,
-    videos         = (process.env.NODE_ENV == 'production') ? require('../assets/videos.json') : require('../assets/videos.sample.json'),
-    tags           = _.reduce(videos, function(tags, video) {
-                       return _.union(video.tags.split(', '), tags);
-                     }),
+    DataHelper     = require('../lib/data-helper'),
+    Videos         = new DataHelper(),
+    videos         = Videos.videos(),
+    tags           = Videos.all_tags(videos),
     firstRender    = true;
 
 require('./helpers')(Handlebars).register();
