@@ -23,5 +23,6 @@ public/*.css
 *.sass
 
 assets/videos.json
+assets/videos??.json
 
 bower_components

@@ -4,7 +4,9 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     curl: {
-      'assets/videos.json': 'http://vimeo.com/api/v2/user5904516/videos.json'
+      'assets/videos-1.json': 'http://vimeo.com/api/v2/user5904516/videos.json',
+      'assets/videos-2.json': 'http://vimeo.com/api/v2/user5904516/videos.json?page=2',
+      'assets/videos-3.json': 'http://vimeo.com/api/v2/user5904516/videos.json?page=3'
     },
 
     browserify: {
