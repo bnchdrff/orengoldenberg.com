@@ -7,6 +7,8 @@ var express = require('express'),
     Router  = require('./app/router'),
     router  = new Router(routes);
 
+app.use(express.compress());
+
 app.use(express.static(__dirname + '/public'));
 
 app.use('/bower', express.static(__dirname + '/bower_components'));
