@@ -172,8 +172,14 @@ Router.prototype.start = function(bootstrappedData) {
         && el.nodeName === 'A'
         && (passThru == false)
        ) {
-      this.directorRouter.setRoute(el.attributes.href.value);
-      e.preventDefault();
+      if (document.body.className.indexOf('active') > -1
+          && el.parentElement.className.indexOf('vid-thumbs') > -1) {
+        // disable other clicks and let our jquery catch em
+        e.preventDefault();
+      } else {
+        this.directorRouter.setRoute(el.attributes.href.value);
+        e.preventDefault();
+      }
     }
     if (el
         && el.nodeName === 'A'
