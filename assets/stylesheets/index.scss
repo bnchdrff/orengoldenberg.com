@@ -8,20 +8,23 @@ $fa-font-path: "/bower/font-awesome/fonts";
 @import "font-awesome";
 
 .debug {
+  display: none;
   position: fixed;
   bottom: 7px;
   right: 23px;
   font-size: 80%;
 }
 
+/* Fonts */
 
+@font-face {font-family: 'NovecentoSans';font-weight: bold;font-style: normal;src: url('fonts/novecentosans/2A556A_0_0.eot');src: url('fonts/novecentosans/2A556A_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_0_0.woff') format('woff'),url('fonts/novecentosans/2A556A_0_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_0_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-Book';src: url('fonts/novecentosans/2A556A_1_0.eot');src: url('fonts/novecentosans/2A556A_1_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_1_0.woff') format('woff'),url('fonts/novecentosans/2A556A_1_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_1_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-DemiBold';src: url('fonts/novecentosans/2A556A_2_0.eot');src: url('fonts/novecentosans/2A556A_2_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_2_0.woff') format('woff'),url('fonts/novecentosans/2A556A_2_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_2_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-Light';src: url('fonts/novecentosans/2A556A_3_0.eot');src: url('fonts/novecentosans/2A556A_3_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_3_0.woff') format('woff'),url('fonts/novecentosans/2A556A_3_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_3_0.svg#wf') format('svg');}
+@font-face {font-family: 'NovecentoSans';font-weight: normal;font-style: normal;src: url('fonts/novecentosans/2A556A_4_0.eot');src: url('fonts/novecentosans/2A556A_4_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_4_0.woff') format('woff'),url('fonts/novecentosans/2A556A_4_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_4_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-Normal';src: url('fonts/novecentosans/2A556A_5_0.eot');src: url('fonts/novecentosans/2A556A_5_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_5_0.woff') format('woff'),url('fonts/novecentosans/2A556A_5_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_5_0.svg#wf') format('svg');}
 
-/* ------------------------------
-- - - - - - - - - - - - - - - - -
-CUSTOM STYLING by ANTONIO: BEGIN!
-- - - - - - - - - - - - - - - - -
------------------------------- */
-
+/* Layout style */
 
 body {
   background: #f8f7f5;
@@ -41,38 +44,44 @@ body {
   background-color: #dfdddd;
 }
 
+/* Type */
 
-
-/* ------------------------------
-
-t y p o g r a p h y
-
------------------------------- */
-
-body { font-family: 'Raleway', sans-serif; }
+body {
+  font-family: 'Raleway', sans-serif;
+}
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: lighter; }
+  font-family: 'NovecentoSans';
+  font-weight: normal;
+}
 
 h1 {
-  font-size: 2.125rem; }
+  font-size: 2.125rem;
+}
 
 h2 {
-  font-size: 1.6875rem; }
+  font-size: 1.6875rem;
+}
 
 h3 {
-  font-size: 1.375rem; }
+  font-size: 1.375rem;
+}
 
 h4 {
-  font-size: 1.125rem; }
+  font-size: 1.125rem;
+}
 
 h5 {
-  font-size: 1.125rem; }
+  font-size: 1.125rem;
+}
 
 h6 {
-  font-size: 1rem; }
+  font-size: 1rem;
+}
 
-a { color: #888; }
+a {
+  color: #888;
+}
 
 ul {
   list-style-type: none;
@@ -83,17 +92,12 @@ strong {
   font-weight: 600;
 }
 
-[role="main"] nav { font-family: 'Raleway', sans-serif; }
-
-
-/* ------------------------------
-
-n a v    m e n u    +    heading
-
------------------------------- */
+/* Menu and heading */
 
 [role="complementary"] nav {
   margin: 0;
+  font-family: 'NovecentoSans';
+  font-weight: normal;
 
   li {
     line-height: 120%;
@@ -121,7 +125,7 @@ n a v    m e n u    +    heading
 }
 
 .nav-bar li ul {
-  margin: 0 0 1.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .nav-bar > li > ul > li {
@@ -141,18 +145,7 @@ n a v    m e n u    +    heading
   content: '';
 }
 
-.large-screen-logo {
-	margin: 0 0 1.5rem 0;
-}
-
-
-
-/* ------------------------------
-
-v i d e o s
-
------------------------------- */
-
+/* Videos */
 
 .vid-thumbs {
   margin: 0 0 1.4rem 0;
@@ -179,14 +172,7 @@ li img {
   }
 }
 
-
-
-/* ------------------------------
-
-s i n g l e    v i d e o
-
------------------------------- */
-
+/* Video */
 
 #single-video-info-box {
   margin: 1rem 0 0 0;
@@ -220,24 +206,18 @@ s i n g l e    v i d e o
 }
 
 
-/* ------------------------------
-
-m e d i a    q u e r i e s
-
------------------------------- */
+/* Media queries */
 
 @media #{$small-only} {
-   
-   [role="complementary"] {
+  [role="complementary"] {
     margin-top: 1.3rem;
   }
-
 }
 
 @media #{$small-up} {
 
   .toggle-menu {
-    text-align: center; 
+    text-align: center;
   }
 
   #view-container {
@@ -342,12 +322,4 @@ m e d i a    q u e r i e s
   }
 
 }
-
-
-/* ------------------------------
-- - - - - - - - - - - - - - - - -
-CUSTOM STYLING by ANTONIO: END!
-- - - - - - - - - - - - - - - - -
------------------------------- */
-
 
