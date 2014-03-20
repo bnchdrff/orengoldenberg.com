@@ -8,6 +8,7 @@ var director       = require('director'),
     Videos         = new DataHelper(),
     videos         = Videos.videos(),
     tags           = Videos.all_tags(videos),
+    friendlyCats   = require('../config.json').friendlyCats,
     firstRender    = true;
 
 require('./helpers')(Handlebars).register();
@@ -122,6 +123,7 @@ Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
   var locals = {
     body: html,
     tags: tags,
+    friendlyCats: friendlyCats,
     bootstrappedData: JSON.stringify(bootstrappedData),
   };
 

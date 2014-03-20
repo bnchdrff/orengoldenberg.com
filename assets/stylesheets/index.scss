@@ -8,7 +8,6 @@ $fa-font-path: "/bower/font-awesome/fonts";
 @import "font-awesome";
 
 .debug {
-  display: none;
   position: fixed;
   bottom: 7px;
   right: 23px;
@@ -108,29 +107,38 @@ n a v    m e n u    +    heading
     }
   }
 
+  .friendly-cats {
+    margin-top: 2rem;
+    font-size: .8rem;
+    a:after {
+      content: ', ';
+    }
+    a:last-child:after {
+      content: '';
+    }
+  }
+
+}
+
+.nav-bar li ul {
+  margin: 0 0 1.5rem 0;
 }
 
 .nav-bar > li > ul > li {
-    font-size: 1.5rem;
-    line-height: 1.2em;
-    padding: 10px;
-    border-bottom: 1px solid #E0E0E0;
-}
-
-.nav-bar > li > ul > li:last-child {
-    border-bottom: none;
+  display: inline-block;
+  padding: 0.25rem;
+  line-height: 1.2rem;
 }
 
 .nav-bar > li > ul > li > a {
-    color: #7C8EAA;
+  color: #7C8EAA;
+  &:after {
+    content: ', ';
+  }
 }
 
-.nav-bar > li > ul {
-   display: none;
-}
-
-.nav-bar > li:hover > ul {
-   display: block;
+.nav-bar > li > ul > li:last-child a:after {
+  content: '';
 }
 
 .large-screen-logo {
@@ -230,16 +238,6 @@ m e d i a    q u e r i e s
 
   .toggle-menu {
     text-align: center; 
-  }
-	
-  .side-nav li, .side-nav li a {
-    display: inline
-  }
-
-  .side-nav li:nth-child(-n + 2) {
-    margin: 0 1rem 0 0;
-    padding: 0 1rem 0 0;
-    border-right: 1px solid #bbb;
   }
 
   #view-container {

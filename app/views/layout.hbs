@@ -24,9 +24,9 @@
     </section>
     <section role="complementary">
       <nav role="navigation">
-      	<h1 class="show-for-large-up large-screen-logo">OREN GOLDENBERG</h1>
+      	<a href="/videos"><h1 class="show-for-large-up large-screen-logo">OREN GOLDENBERG</h1></a>
         <ul class="nav-bar">
-          <li><a href="/videos">WORK</a>
+          <li class="categories">
             <ul>
               {{#each tags}}
                 <li><a href="/videos-tagged/{{this}}">{{decode this}}</a></li>
@@ -35,6 +35,12 @@
           </li>
           <li><a href="/pages/about">ABOUT</a></li>
           <li><a href="/pages/contact">CONTACT</a></li>
+          <li class="friendly-cats">
+            view all:
+            {{#each friendlyCats}}
+              <a href="/videos-tagged/{{this}}">{{decode this}}</a>
+            {{/each}}
+          </li>
         </ul>
       </nav>
     </section>
@@ -57,6 +63,9 @@ window.bootstrappedData = {{{bootstrappedData}}};
     $('a:not(.toggle-menu)').on('click', function(e) {
       $('body').removeClass('active');
     });
+    if (window.location.pathname == '/') {
+      $('body').addClass('active');
+    }
   });
 </script>
 </body>
