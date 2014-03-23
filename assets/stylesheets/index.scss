@@ -180,10 +180,6 @@ li img {
   position: relative;
 }
 
-#single-video-info-box-text {
-  padding-right: 2rem;
-}
-
 #single-video-info-box-text > h2 {
   font-size: 1rem;
   font-weight: bold;
@@ -286,10 +282,6 @@ li img {
 
 
 @media #{$large-up} {
-
-  #single-video-info-box-text {
-    border-right: 3px solid #ccc;
-  }
 
   #view-container {
     margin: 0;
