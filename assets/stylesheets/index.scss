@@ -287,20 +287,6 @@ li img {
 
 @media #{$large-up} {
 
-  #main-side-bar {
-    text-align: left;
-  }
-
-  .side-nav li, .side-nav li a{
-    display: block;
-  }
-
-  .side-nav li:nth-child(-n + 2) {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    border-right: none;
-  }
-
   #single-video-info-box-text {
     border-right: 3px solid #ccc;
   }
