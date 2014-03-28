@@ -129,20 +129,12 @@ strong {
 }
 
 .nav-bar > li > ul > li {
-  display: inline-block;
   padding: 0.25rem;
   line-height: 1.2rem;
 }
 
 .nav-bar > li > ul > li > a {
   color: #7C8EAA;
-  &:after {
-    content: ', ';
-  }
-}
-
-.nav-bar > li > ul > li:last-child a:after {
-  content: '';
 }
 
 /* Videos */
