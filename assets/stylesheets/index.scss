@@ -1,4 +1,5 @@
 // normalize
+$include-open-sans: false;
 $legacy-support-for-ie6: false;
 $legacy-support-for-ie7: false;
 $legacy-support-for-ie8: false;
@@ -17,12 +18,12 @@ $fa-font-path: "/bower/font-awesome/fonts";
 
 /* Fonts */
 
-@font-face {font-family: 'NovecentoSans';font-weight: bold;font-style: normal;src: url('fonts/novecentosans/2A556A_0_0.eot');src: url('fonts/novecentosans/2A556A_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_0_0.woff') format('woff'),url('fonts/novecentosans/2A556A_0_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_0_0.svg#wf') format('svg');}
-@font-face {font-family: 'Novecentosanswide-Book';src: url('fonts/novecentosans/2A556A_1_0.eot');src: url('fonts/novecentosans/2A556A_1_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_1_0.woff') format('woff'),url('fonts/novecentosans/2A556A_1_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_1_0.svg#wf') format('svg');}
-@font-face {font-family: 'Novecentosanswide-DemiBold';src: url('fonts/novecentosans/2A556A_2_0.eot');src: url('fonts/novecentosans/2A556A_2_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_2_0.woff') format('woff'),url('fonts/novecentosans/2A556A_2_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_2_0.svg#wf') format('svg');}
-@font-face {font-family: 'Novecentosanswide-Light';src: url('fonts/novecentosans/2A556A_3_0.eot');src: url('fonts/novecentosans/2A556A_3_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_3_0.woff') format('woff'),url('fonts/novecentosans/2A556A_3_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_3_0.svg#wf') format('svg');}
-@font-face {font-family: 'NovecentoSans';font-weight: normal;font-style: normal;src: url('fonts/novecentosans/2A556A_4_0.eot');src: url('fonts/novecentosans/2A556A_4_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_4_0.woff') format('woff'),url('fonts/novecentosans/2A556A_4_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_4_0.svg#wf') format('svg');}
-@font-face {font-family: 'Novecentosanswide-Normal';src: url('fonts/novecentosans/2A556A_5_0.eot');src: url('fonts/novecentosans/2A556A_5_0.eot?#iefix') format('embedded-opentype'),url('fonts/novecentosans/2A556A_5_0.woff') format('woff'),url('fonts/novecentosans/2A556A_5_0.ttf') format('truetype'),url('fonts/novecentosans/2A556A_5_0.svg#wf') format('svg');}
+@font-face {font-family: 'NovecentoSans';font-weight: bold;font-style: normal;src: url('/fonts/novecentosans/2A556A_0_0.eot');src: url('/fonts/novecentosans/2A556A_0_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_0_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_0_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_0_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-Book';src: url('/fonts/novecentosans/2A556A_1_0.eot');src: url('/fonts/novecentosans/2A556A_1_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_1_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_1_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_1_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-DemiBold';src: url('/fonts/novecentosans/2A556A_2_0.eot');src: url('/fonts/novecentosans/2A556A_2_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_2_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_2_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_2_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-Light';src: url('/fonts/novecentosans/2A556A_3_0.eot');src: url('/fonts/novecentosans/2A556A_3_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_3_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_3_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_3_0.svg#wf') format('svg');}
+@font-face {font-family: 'NovecentoSans';font-weight: normal;font-style: normal;src: url('/fonts/novecentosans/2A556A_4_0.eot');src: url('/fonts/novecentosans/2A556A_4_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_4_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_4_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_4_0.svg#wf') format('svg');}
+@font-face {font-family: 'Novecentosanswide-Normal';src: url('/fonts/novecentosans/2A556A_5_0.eot');src: url('/fonts/novecentosans/2A556A_5_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_5_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_5_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_5_0.svg#wf') format('svg');}
 
 /* Layout style */
 
