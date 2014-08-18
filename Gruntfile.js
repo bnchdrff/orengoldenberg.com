@@ -62,6 +62,7 @@ module.exports = function(grunt) {
           'require': ['compass-normalize', 'sass-globbing'],
           'importPath': ['bower_components/foundation/scss', 'bower_components/font-awesome/scss'],
           'bundleExec': true,
+          'sourcemap': true,
           'environment': 'development'
         }
       },
