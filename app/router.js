@@ -118,13 +118,13 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
-  var bootstrappedData = videos;
+  var allVideos = videos;
 
   var locals = {
     body: html,
     tags: tags,
     friendlyCats: friendlyCats,
-    bootstrappedData: JSON.stringify(bootstrappedData),
+    allVideos: JSON.stringify(allVideos),
   };
 
   this.wrapWithLayout(locals, function(err, layoutHtml) {
@@ -150,8 +150,8 @@ Router.prototype.middleware = function() {
 };
 
 // client-side
-Router.prototype.start = function(bootstrappedData) {
-  this.bootstrappedData = bootstrappedData;
+Router.prototype.start = function(allVideos) {
+  this.allVideos = allVideos;
 
   this.directorRouter.configure({
     html5history: true

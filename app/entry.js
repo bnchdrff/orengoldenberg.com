@@ -6,6 +6,6 @@ var Router = require('./router'),
 
 window.router = router;
 
-router.start(window.bootstrappedData);
+router.start(window.allVideos);
 
 //window.tricks = tricks;
