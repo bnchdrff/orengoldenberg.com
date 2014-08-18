@@ -1,11 +1,11 @@
 var Router = require('./router'),
     routes = require('./routes'),
-    router = new Router(routes),
-    Tricks = require('./tricks');
-    tricks = new Tricks(window);
+    router = new Router(routes);
+    //Tricks = require('./tricks'),
+    //tricks = new Tricks(window);
 
 window.router = router;
 
 router.start(window.bootstrappedData);
 
-window.tricks = tricks;
+//window.tricks = tricks;
