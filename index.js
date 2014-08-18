@@ -14,6 +14,11 @@ app.use(express.static(__dirname + '/public'));
 app.use('/bower', express.static(__dirname + '/bower_components'));
 app.use('/fonts', express.static(__dirname + '/assets/fonts'));
 
+// for sourcemaps
+if (process.env.NODE_ENV != 'production') {
+  app.use('/assets', express.static(__dirname + '/assets'));
+}
+
 app.use(router.middleware());
 
 app.use('/api', api.proxyMiddleware(apiPort));
