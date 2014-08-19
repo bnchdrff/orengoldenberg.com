@@ -12,8 +12,10 @@ module.exports = function(grunt) {
     browserify: {
       prod: {
         options: {
-          debug: true,
-          transform: ['uglifyify', 'hbsfy'],
+          bundleOptions: {
+            debug: true
+          },
+          transform: ['hbsfy'],
           aliasMappings: [
             {
               cwd: 'app/views',
@@ -33,7 +35,9 @@ module.exports = function(grunt) {
       },
       devel: {
         options: {
-          debug: true,
+          bundleOptions: {
+            debug: true
+          },
           transform: ['hbsfy'],
           aliasMappings: [
             {
