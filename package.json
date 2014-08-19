@@ -18,7 +18,7 @@
     "express": "~3.4.3",
     "director": "~1.2.0",
     "handlebars": "~2.0.0-alpha.4",
-    "hbsfy": "~1.0.0",
+    "hbsfy": "~2.0.0",
     "http-proxy": "~0.10.3",
     "jquery-browserify": "~1.8.1",
     "lodash": "~2.4.1",
