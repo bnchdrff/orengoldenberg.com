@@ -140,12 +140,11 @@ strong {
 .vid-thumbs {
   margin: 0 0 1.4rem 0;
   text-align: center;
-}
-
-li img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .vimeo-video {
