@@ -22,6 +22,7 @@
     "http-proxy": "~0.10.3",
     "jquery-browserify": "~1.8.1",
     "lodash": "~2.4.1",
+    "three": "~0.68.0",
     "node-flatpages": "~0.1.0"
   },
   "devDependencies": {

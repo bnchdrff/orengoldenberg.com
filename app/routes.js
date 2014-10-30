@@ -1,4 +1,6 @@
-var apiClient = require('./api_client');
+var apiClient = require('./api_client'),
+    isServer  = typeof window === 'undefined';
+
 
 module.exports = function(match) {
   match('/', function(callback) {
@@ -35,6 +37,9 @@ module.exports = function(match) {
         return callback(err);
       }
       var videos = res.body;
+      if (!isServer) {
+        window.videos = videos;
+      }
       callback(null, 'videos-tagged', {videos: videos});
     });
   });
