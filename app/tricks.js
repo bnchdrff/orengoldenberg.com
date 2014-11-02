@@ -99,15 +99,22 @@ Tricks.prototype.attach = function(window) {
   // via https://stackoverflow.com/questions/24690731/three-js-3d-models-as-hyperlink
   $('section[role="main"]').on('mousedown', 'canvas', function(ev) {
     ev.preventDefault();
-    var vector = new THREE.Vector3((ev.clientX / window.innerWidth) * 2 -
-        1, -(ev.clientY / window.innerHeight) * 2 + 1, 0.5);
+
+    var scroll_w = $(document).width() - $(window).width() - $(window).scrollLeft();
+    var scroll_h = $(document).height() - $(window).height() - $(window).scrollTop();
+
+    var vector = new THREE.Vector3();
+    vector.set(((ev.clientX - scroll_w) / window.innerWidth) * 2 - 1, -((ev.clientY - scroll_h) / window.innerHeight) * 2 + 1, 0.5);
+
     projector.unprojectVector(vector, camera);
-    var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position)
-        .normalize());
+
+    var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+
     var intersects = raycaster.intersectObjects(video_cubes);
-    debugger;
+
     if (intersects.length > 0) {
-      //window.location.pathname = '/videos/' + intersects[0].object.userData.id;
+      var video_id = intersects[0].object.userData.id;
+      window.location.pathname = '/videos/' + video_id;
     }
   });
 
