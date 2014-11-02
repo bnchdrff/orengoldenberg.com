@@ -9,6 +9,18 @@ function Tricks(window) {
   window.THREE = THREE;
 }
 
+function webglAvailable() {
+  try {
+    var canvas = document.createElement("canvas");
+    return !!
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") ||
+        canvas.getContext("experimental-webgl"));
+  } catch(e) {
+    return false;
+  }
+}
+
 Tricks.prototype.attach = function(window) {
   var container = document.querySelector('section > div.row');
   var width = container.offsetWidth;
@@ -18,7 +30,11 @@ Tricks.prototype.attach = function(window) {
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
-  var renderer = new THREE.WebGLRenderer( { alpha: true } );
+  if (webglAvailable()) {
+    var renderer = new THREE.WebGLRenderer( { alpha: true } );
+  } else {
+    var renderer = new THREE.CanvasRenderer( { alpha: true } );
+  }
   var projector = new THREE.Projector();
 
   window.scene = scene;
