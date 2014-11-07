@@ -22,6 +22,14 @@ function webglAvailable() {
 }
 
 Tricks.prototype.attach = function(window) {
+  // style hacks for now
+  $('body').css({
+    overflow: 'hidden'
+  });
+  $('.row').css({
+    maxWidth: '100%'
+  });
+
   var container = document.querySelector('section > div.row');
   var width = container.offsetWidth;
   var height = window.innerHeight - container.offsetTop;
@@ -48,27 +56,20 @@ Tricks.prototype.attach = function(window) {
   container.appendChild(renderer.domElement);
 
   // Create light
-  var directionalLight = new THREE.DirectionalLight(0xffffff, .5);
-  directionalLight.position.set(.5, 1, .5);
-  scene.add(directionalLight);
+  var light = new THREE.AmbientLight(0xffffff);
+  light.position.set(.5, 1, .5);
+  scene.add(light);
+  window.light = light;
 
   // Defines cube size and material type/color/texture
   var geometry = new THREE.BoxGeometry(1.7, 1, 14);
-
-
-  // function create_grid(row_spacing, column_spacing) {
-  //
-  // }
-
-  var x, y, z;
-  x = y = z = 0;
 
   // Create a single cube with position x,y,z calculated by args i,j,k
   function create_cube(x, y, z, thumb_idx) {
     var img = new Image();
     img.crossOrigin = "anonymous";
+    // @todo read host from conf
     img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', '127.0.0.1:7779');
-    //img.src = window.allVideos[thumb_idx].thumbnail_large;
     var tex = new THREE.Texture(img);
     img.tex = tex;
 
@@ -77,12 +78,12 @@ Tricks.prototype.attach = function(window) {
     };
 
     var materials = [
+      new THREE.MeshLambertMaterial({color:0xf8f7f5}),
+      new THREE.MeshLambertMaterial({color:0xf8f7f5}),
       new THREE.MeshLambertMaterial({color:0xFFFFFF}),
-      new THREE.MeshLambertMaterial({color:0xFFFFFF}),
-      new THREE.MeshLambertMaterial({color:0xFFFFFF}),
-      new THREE.MeshLambertMaterial({color:0xFFFFFF}),
-      new THREE.MeshBasicMaterial({color:0xFFFFFF, map:tex}),
-      new THREE.MeshLambertMaterial({color:0xFFFFFF})
+      new THREE.MeshLambertMaterial({color:0xf8f7f5}),
+      new THREE.MeshBasicMaterial({color:0xf8f7f5, map:tex}),
+      new THREE.MeshLambertMaterial({color:0xf8f7f5})
     ];
     var material = new THREE.MeshFaceMaterial(materials);
     var cube = new THREE.Mesh(geometry, material);
@@ -120,42 +121,30 @@ Tricks.prototype.attach = function(window) {
 
   function pos_to_xy(x, y) {
     x = x*2;
-    y = y*1.3;
+    y = y*-1.3;
     return {x:x, y:y};
   }
 
-  // Add a bunch of cubes to a scene in a grid
   function create_cubes(number_of_cubes) {
-    // @todo create rows and columns vars to hold cubes in a grid
-    var rows = 4;
     var columns = 3;
+    var rows = Math.ceil(number_of_cubes/columns);
 
-    // @todo do math to make sure number_of_cubes is a grid multiple, if it isn't a good number return false
     var thumbnail_index = 0;
 
-    for (var x=0; x<columns; x++) {
-      for (var y=0; y<rows; y++) {
+    for (var row=0; row<rows; row++) {
+      for (var col=0; col<columns; col++) {
         var coord = [];
-        coord = pos_to_xy(x, y);
-        video_cubes[thumbnail_index] = create_cube(coord.x, coord.y, z, thumbnail_index);
+        coord = pos_to_xy(col, row);
+        if (!window.allVideos[thumbnail_index]) return;
+        video_cubes[thumbnail_index] = create_cube(coord.x, coord.y, 0, thumbnail_index);
         scene.add(video_cubes[thumbnail_index]);
         thumbnail_index++;
       }
     }
-
-    return true;
   }
 
-  // make sure to fix function to properly display correct # of cubes
-  create_cubes(3);
-
-  // CAMERA POSITION
-  camera.position.set(7.5, 1.8, 12.5);
-  camera.rotation.x = 0.05152; // change to equal -.05152 - express with X*(math.pi/180)
-  camera.rotation.y = 0.6655; // change to equal 0.6655 - express with X*(math.pi/180)
-  camera.rotation.z = 0; // change to equal 0.3363 - express with X*(math.pi/180)
-window.camera = camera;
-  // animation
+  camera.position.set(7.3, -2.3, 12.5);
+  camera.rotation.set(0.05152, 0.6655, -0.029);
 
   var render = function() {
     requestAnimationFrame(render);
@@ -163,5 +152,31 @@ window.camera = camera;
   };
 
   render();
+
+  // mouse scroll biz
+  // like http://stackoverflow.com/questions/12636370/three-js-zoom-in-out-complete-tube-geometry
+  var mousewheel = function(e) {
+    var d = ((typeof e.wheelDelta != "undefined") ? (-e.wheelDelta) : e.detail);
+    d = .23 * ((d > 0) ? 1 : -1);
+
+    var cPos = camera.position;
+    if (isNaN(cPos.x) || isNaN(cPos.y) || isNaN(cPos.z))
+      return;
+
+    var r = cPos.x*cPos.x + cPos.y*cPos.y;
+    var sqr = Math.sqrt(r);
+
+    var ny = cPos.y + ((r==0)?0:(d * cPos.y/sqr));
+
+    if (isNaN(ny))
+      return;
+
+    cPos.y = ny;
+  }
+
+  document.body.addEventListener('mousewheel', mousewheel, false);
+  document.body.addEventListener('DOMMouseScroll', mousewheel, false);
+
+  create_cubes(window.allVideos.length);
 };
 
