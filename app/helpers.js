@@ -5,6 +5,9 @@ module.exports = function(Handlebars) {
     },
     decode: function(uricomponent) {
       return decodeURIComponent(uricomponent);
+    },
+    jsonstringify: function(obj) {
+      return JSON.stringify(obj);
     }
   };
   function register() {

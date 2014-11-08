@@ -38,7 +38,7 @@ module.exports = function(match) {
       }
       var videos = res.body;
       if (!isServer) {
-        window.videos = videos;
+        window.someVideos = videos;
       }
       callback(null, 'videos-tagged', {videos: videos});
     });
