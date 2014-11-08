@@ -56,4 +56,8 @@ module.exports = function(match) {
     });
   });
 
+  match('/video-thumb/:id', function(id, callback) {
+    console.log('video-thumb/' + id + ' hit');
+  });
+
 };
