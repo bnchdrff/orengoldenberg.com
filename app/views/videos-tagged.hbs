@@ -20,7 +20,8 @@
 
 </div>
 
-<div class="debug">Rendered {{renderer}}-side</div>
+{{#if isServer}}
 <script>
 window.someVideos = {{{jsonstringify videos}}};
 </script>
+{{/if}}

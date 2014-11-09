@@ -58,7 +58,7 @@ Router.prototype.getRouteHandler = function(handler) {
         }
 
         data = data || {};
-        data.renderer = isServer ? 'server' : 'client';
+        data.isServer = isServer;
 
         router.renderView(viewPath, data, function(err, html) {
           if (err) {
