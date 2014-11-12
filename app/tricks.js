@@ -57,15 +57,11 @@ Tricks.prototype.attach = function(window) {
 
   // Create light
   var light = new THREE.AmbientLight(0xffffff);
-  light.position.set(.5, 1, .5);
   scene.add(light);
-  window.light = light;
-
-  // Defines cube size and material type/color/texture
-  var geometry = new THREE.BoxGeometry(1.7, 1, 14);
 
   // Create a single cube with position x,y,z calculated by args i,j,k
   function create_cube(x, y, z, thumb_idx) {
+    var geometry = new THREE.BoxGeometry(1.7, 1, 14); // should be in config?
     var img = new Image();
     img.crossOrigin = "anonymous";
     // @todo read host from conf
@@ -77,13 +73,26 @@ Tricks.prototype.attach = function(window) {
       this.tex.needsUpdate = true;
     };
 
+    var bgcolor = 0xf8f7f5;
+    var fgcolor = 0xffffff;
+
+    var bg_opts = {
+      color: bgcolor,
+      ambient: bgcolor
+    };
+
+    var fg_opts = {
+      color: fgcolor,
+      ambient: fgcolor
+    };
+
     var materials = [
-      new THREE.MeshLambertMaterial({color:0xf8f7f5}),
-      new THREE.MeshLambertMaterial({color:0xf8f7f5}),
-      new THREE.MeshLambertMaterial({color:0xFFFFFF}),
-      new THREE.MeshLambertMaterial({color:0xf8f7f5}),
-      new THREE.MeshBasicMaterial({color:0xf8f7f5, map:tex}),
-      new THREE.MeshLambertMaterial({color:0xf8f7f5})
+      new THREE.MeshLambertMaterial(bg_opts),
+      new THREE.MeshLambertMaterial(bg_opts),
+      new THREE.MeshLambertMaterial(fg_opts),
+      new THREE.MeshLambertMaterial(bg_opts),
+      new THREE.MeshBasicMaterial({color: fgcolor, map: tex}),
+      new THREE.MeshLambertMaterial(bg_opts)
     ];
     var material = new THREE.MeshFaceMaterial(materials);
     var cube = new THREE.Mesh(geometry, material);
@@ -178,5 +187,7 @@ Tricks.prototype.attach = function(window) {
   document.body.addEventListener('DOMMouseScroll', mousewheel, false);
 
   create_cubes(window.allVideos.length);
+
+  window.router.applyThreeRoute();
 };
 
