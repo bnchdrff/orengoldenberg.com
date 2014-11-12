@@ -114,7 +114,29 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 };
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
-  document.getElementById('view-container').innerHTML = html;
+  var is_a_single_video = viewPath.match('videos\/');
+
+  if (!is_a_single_video && window.video_cubes) {
+    document.getElementById('view-container').innerHTML = '';
+    document.querySelector('canvas').style.display = 'block';
+    this.applyThreeRoute();
+  } else {
+    document.getElementById('view-container').innerHTML = html;
+    document.querySelector('canvas').style.display = 'hidden';
+  }
+};
+
+Router.prototype.applyThreeRoute = function() {
+  if (typeof someVideos == 'object') {
+    var some_video_ids = _.pluck(someVideos, 'id');
+    _.each(video_cubes, function(cube) {
+      if (_.contains(some_video_ids, cube.userData.id)) {
+        cube.scale.z = 1;
+      } else {
+        cube.scale.z = 0.67;
+      }
+    });
+  }
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
