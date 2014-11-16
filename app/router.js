@@ -114,15 +114,19 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 };
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
-  var is_a_single_video = viewPath.match('videos\/');
+  if (window.video_cubes) {
+    var is_a_single_video = viewPath.match('videos\/');
 
-  if (!is_a_single_video && window.video_cubes) {
-    document.getElementById('view-container').innerHTML = '';
-    document.querySelector('canvas').style.display = 'block';
-    this.applyThreeRoute();
+    if (!is_a_single_video) {
+      document.getElementById('view-container').innerHTML = '';
+      document.querySelector('canvas').style.display = 'block';
+      this.applyThreeRoute();
+    } else {
+      document.getElementById('view-container').innerHTML = html;
+      document.querySelector('canvas').style.display = 'hidden';
+    }
   } else {
     document.getElementById('view-container').innerHTML = html;
-    document.querySelector('canvas').style.display = 'hidden';
   }
 };
 
