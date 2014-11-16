@@ -196,10 +196,10 @@ Router.prototype.start = function(allVideos) {
       }
     }
 
-    if (el
-        && el.nodeName === 'A'
-        && (passThru == false)
-       ) {
+    var is_our_link = (el && el.nodeName === 'A' && (passThru == false));
+    var isnt_our_link = (el && el.nodeName === 'A' && (passThru == false));
+
+    if (is_our_link) {
       if (document.body.className.indexOf('active') > -1
           && el.parentElement.className.indexOf('vid-thumbs') > -1) {
         // disable other clicks and let our jquery catch em
@@ -209,10 +209,7 @@ Router.prototype.start = function(allVideos) {
         e.preventDefault();
       }
     }
-    if (el
-        && el.nodeName === 'A'
-        && (passThru == true)
-       ) {
+    if (isnt_our_link) {
       e.preventDefault();
     }
   }.bind(this), true);
