@@ -5,8 +5,10 @@ var _             = require('lodash'),
 module.exports = Tricks;
 
 function Tricks(window) {
-  this.attach(window);
-  window.THREE = THREE;
+  if (webglAvailable()) {
+    this.attach(window);
+    window.THREE = THREE;
+  }
 }
 
 function webglAvailable() {

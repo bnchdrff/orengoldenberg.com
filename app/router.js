@@ -114,15 +114,19 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 };
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
-  var is_a_single_video = viewPath.match('videos\/');
+  if (window.video_cubes) {
+    var is_a_single_video = viewPath.match('videos\/');
 
-  if (!is_a_single_video && window.video_cubes) {
-    document.getElementById('view-container').innerHTML = '';
-    document.querySelector('canvas').style.display = 'block';
-    this.applyThreeRoute();
+    if (!is_a_single_video) {
+      document.getElementById('view-container').innerHTML = '';
+      document.querySelector('canvas').style.display = 'block';
+      this.applyThreeRoute();
+    } else {
+      document.getElementById('view-container').innerHTML = html;
+      document.querySelector('canvas').style.display = 'hidden';
+    }
   } else {
     document.getElementById('view-container').innerHTML = html;
-    document.querySelector('canvas').style.display = 'hidden';
   }
 };
 
@@ -192,10 +196,10 @@ Router.prototype.start = function(allVideos) {
       }
     }
 
-    if (el
-        && el.nodeName === 'A'
-        && (passThru == false)
-       ) {
+    var is_our_link = (el && el.nodeName === 'A' && (passThru == false));
+    var isnt_our_link = (el && el.nodeName === 'A' && (passThru == false));
+
+    if (is_our_link) {
       if (document.body.className.indexOf('active') > -1
           && el.parentElement.className.indexOf('vid-thumbs') > -1) {
         // disable other clicks and let our jquery catch em
@@ -205,10 +209,7 @@ Router.prototype.start = function(allVideos) {
         e.preventDefault();
       }
     }
-    if (el
-        && el.nodeName === 'A'
-        && (passThru == true)
-       ) {
+    if (isnt_our_link) {
       e.preventDefault();
     }
   }.bind(this), true);
