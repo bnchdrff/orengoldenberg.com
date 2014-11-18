@@ -39,7 +39,7 @@ Tricks.prototype.attach = function(window) {
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
   if (webglAvailable()) {
-    var renderer = new THREE.WebGLRenderer( { alpha: true } );
+    var renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
   } else {
     var renderer = new THREE.CanvasRenderer( { alpha: true } );
   }
@@ -65,7 +65,7 @@ Tricks.prototype.attach = function(window) {
     var img = new Image();
     img.crossOrigin = "anonymous";
     // @todo read host from conf
-    img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', '127.0.0.1:7779');
+    img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', 'detriot.org:7779');
     var tex = new THREE.Texture(img);
     img.tex = tex;
 
