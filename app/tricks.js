@@ -154,8 +154,8 @@ Tricks.prototype.attach = function(window) {
     }
   }
 
-  camera.position.set(2, -3.8, 18);
-  camera.rotation.set(0, 0, 0);
+  camera.position.set(2.5, -3.8, 16);
+  camera.rotation.set(-.2, .07, 0);
 
   var render = function() {
     requestAnimationFrame(render);
