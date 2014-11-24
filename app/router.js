@@ -2,6 +2,7 @@ var director       = require('director'),
     isServer       = typeof window === 'undefined',
     _              = require('lodash/dist/lodash.underscore'),
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
+    TWEEN          = require('tween'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
     DirectorRouter = isServer ? director.http.Router : director.Router,
     DataHelper     = require('../lib/data-helper'),
@@ -135,9 +136,9 @@ Router.prototype.applyThreeRoute = function() {
     var some_video_ids = _.pluck(someVideos, 'id');
     _.each(video_cubes, function(cube) {
       if (_.contains(some_video_ids, cube.userData.id)) {
-        cube.scale.z = 1;
+        var tween = new TWEEN.Tween(cube.scale).to({z: 1}, 3000).start();
       } else {
-        cube.scale.z = 0.67;
+        var tween = new TWEEN.Tween(cube.scale).to({z: 0.67}, 3000).start();
       }
     });
   }

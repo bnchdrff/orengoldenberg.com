@@ -1,5 +1,6 @@
 // frontend tricks, as an example of using bootstrapped data for silly not-isomorphic stuff
 var _             = require('lodash'),
+    TWEEN         = require('tween'),
     THREE         = require('three');
 
 module.exports = Tricks;
@@ -160,6 +161,7 @@ Tricks.prototype.attach = function(window) {
   var render = function() {
     requestAnimationFrame(render);
     renderer.render(scene, camera);
+    TWEEN.update();
   };
 
   render();
