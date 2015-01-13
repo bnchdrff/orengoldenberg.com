@@ -9,6 +9,7 @@ function Tricks(window) {
   if (webglAvailable()) {
     this.attach(window);
     window.THREE = THREE;
+    window._ = _;
   }
 }
 
@@ -68,7 +69,7 @@ Tricks.prototype.attach = function(window) {
     var img = new Image();
     img.crossOrigin = "anonymous";
     // @todo read host from conf
-    img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', 'detriot.org:7779');
+    img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', 'localhost:7779');
     var tex = new THREE.Texture(img);
     img.tex = tex;
 
@@ -110,14 +111,18 @@ Tricks.prototype.attach = function(window) {
   }
 
   // via https://stackoverflow.com/questions/24690731/three-js-3d-models-as-hyperlink
+  // & https://stackoverflow.com/a/5417934
   $('section[role="main"]').on('mousedown', 'canvas', function(ev) {
     ev.preventDefault();
 
-    var scroll_w = $(document).width() - $(window).width() - $(window).scrollLeft();
-    var scroll_h = $(document).height() - $(window).height() - $(window).scrollTop();
+    var x, y, thisOffset;
+
+    thisOffset = $(this).offset();
+    x = ev.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(thisOffset.left);
+    y = ev.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(thisOffset.top) + 1;
 
     var vector = new THREE.Vector3();
-    vector.set(((ev.clientX - scroll_w) / window.innerWidth) * 2 - 1, -((ev.clientY - scroll_h) / window.innerHeight) * 2 + 1, 0.5);
+    vector.set(((x) / this.offsetWidth) * 2 - 1, -((y) / this.offsetHeight) * 2 + 1, 0.5);
 
     projector.unprojectVector(vector, camera);
 
@@ -127,6 +132,7 @@ Tricks.prototype.attach = function(window) {
 
     if (intersects.length > 0) {
       var video_id = intersects[0].object.userData.id;
+      //console.log(_.where(allVideos, {id: video_id})[0].title);
       window.location.pathname = '/videos/' + video_id;
     }
   });
