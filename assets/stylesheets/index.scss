@@ -28,8 +28,8 @@ $fa-font-path: "/bower/font-awesome/fonts";
 /* Layout style */
 
 body {
-  background: #f8f7f5;
-  color: #90938b;
+  background: #555;
+  color: white;
 }
 
 #main-wrapper {
@@ -286,6 +286,11 @@ strong {
   [role="main"] {
     width: 65%;
     padding: 0 15px;
+  }
+
+  .friendly-cats {
+    position: fixed;
+    bottom: 0;
   }
 
 }
