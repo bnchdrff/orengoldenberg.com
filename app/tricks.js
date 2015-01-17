@@ -6,14 +6,18 @@ var _             = require('lodash'),
 module.exports = Tricks;
 
 function Tricks(window) {
-  if (webglAvailable()) {
-    this.attach(window);
-    window.THREE = THREE;
-    window._ = _;
-  }
+  window.Tricks = this;
 }
 
-function webglAvailable() {
+Tricks.prototype.showCubes = function() {
+  return false;//this.webglAvailable() && this.isVideoList();
+};
+
+Tricks.prototype.isVideoList = function() {
+  return !window.location.href.match('videos\/');
+};
+
+Tricks.prototype.webglAvailable = function() {
   try {
     var canvas = document.createElement("canvas");
     return !!
@@ -23,26 +27,45 @@ function webglAvailable() {
   } catch(e) {
     return false;
   }
-}
+};
 
-Tricks.prototype.attach = function(window) {
-  // style hacks for now
+Tricks.prototype.waxOn = function() {
+  document.querySelector('canvas').style.display = 'block';
+  document.getElementById('view-container').innerHTML = '';
   $('body').css({
     overflow: 'hidden'
   });
   $('.row').css({
     maxWidth: '100%'
   });
+};
+
+Tricks.prototype.waxOff = function() {
+  $('body').css({
+    overflow: 'visible'
+  });
+  $('.row').css({
+    maxWidth: 'auto'
+  });
+};
+
+Tricks.prototype.attach = function(window) {
+  if (!this.showCubes()) {
+    return;
+  }
+
+  window.THREE = THREE;
+  window._ = _;
 
   var container = document.querySelector('section > div.row');
   var width = container.offsetWidth;
   var height = window.innerHeight - container.offsetTop;
 
-  $('#view-container ul').hide();
+  this.waxOn();
 
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
-  if (webglAvailable()) {
+  if (this.webglAvailable()) {
     var renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
   } else {
     var renderer = new THREE.CanvasRenderer( { alpha: true } );
