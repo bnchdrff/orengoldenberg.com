@@ -136,9 +136,9 @@ Router.prototype.applyThreeRoute = function() {
     var some_video_ids = _.pluck(someVideos, 'id');
     _.each(video_cubes, function(cube) {
       if (_.contains(some_video_ids, cube.userData.id)) {
-        var tween = new TWEEN.Tween(cube.scale).to({z: 1}, 3000).start();
+        var tween = new TWEEN.Tween(cube.scale).to({z: 1}, 1700).start();
       } else {
-        var tween = new TWEEN.Tween(cube.scale).to({z: 0.67}, 3000).start();
+        var tween = new TWEEN.Tween(cube.scale).to({z: 0.67}, 1700).start();
       }
     });
   }
