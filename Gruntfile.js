@@ -12,9 +12,7 @@ module.exports = function(grunt) {
     browserify: {
       prod: {
         options: {
-          bundleOptions: {
-            debug: true
-          },
+          debug: true,
           transform: ['hbsfy'],
           aliasMappings: [
             {
@@ -35,9 +33,7 @@ module.exports = function(grunt) {
       },
       devel: {
         options: {
-          bundleOptions: {
-            debug: true
-          },
+          debug: true,
           transform: ['hbsfy'],
           aliasMappings: [
             {
