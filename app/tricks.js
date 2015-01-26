@@ -80,8 +80,12 @@ Tricks.prototype.attach = function(window, cb) {
     container.appendChild(renderer.domElement);
 
     // Create light
-    var light = new THREE.AmbientLight(0xffffff);
-    scene.add(light);
+    var dlight = new THREE.DirectionalLight(0xffffff, 0.99);
+    dlight.position.set( .5, 1, -1);
+    scene.add(dlight);
+    var blight = new THREE.DirectionalLight(0xffffff, 0.99);
+    blight.position.set( .5, 1, -1);
+    scene.add(blight);
 
     // Create a single cube with position x,y,z calculated by args i,j,k
     function create_cube(x, y, z, thumb_idx) {
