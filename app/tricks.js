@@ -196,7 +196,7 @@ Tricks.prototype.attach = function(window, cb) {
     // like http://stackoverflow.com/questions/12636370/three-js-zoom-in-out-complete-tube-geometry
     var mousewheel = function(e) {
       var d = ((typeof e.wheelDelta != "undefined") ? (-e.wheelDelta) : e.detail);
-      d = .23 * ((d > 0) ? 1 : -1);
+      d = .1 * ((d > 0) ? 1 : -1);
 
       var cPos = camera.position;
       if (isNaN(cPos.x) || isNaN(cPos.y) || isNaN(cPos.z))
