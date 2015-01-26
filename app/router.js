@@ -3,6 +3,7 @@ var director       = require('director'),
     _              = require('lodash/dist/lodash.underscore'),
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
     TWEEN          = require('tween'),
+    Tricks         = require('./tricks'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
     DirectorRouter = isServer ? director.http.Router : director.Router,
     DataHelper     = require('../lib/data-helper'),
@@ -21,6 +22,9 @@ function Router(routesFn) {
     throw new Error('Must provide routes.');
   }
   this.directorRouter = new DirectorRouter(this.parseRoutes(routesFn));
+  if (!isServer) {
+    window.TWEEN = TWEEN;
+  }
 }
 
 Router.prototype.parseRoutes = function(routesFn) {
@@ -115,30 +119,20 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 };
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
-  if (window.video_cubes) {
-    var is_a_single_video = viewPath.match('videos\/');
+  if (viewPath != 'video') {
+    window.tricks.attach(window, function() {
+      if (window.video_cubes) {
+        var is_a_single_video = viewPath.match('videos\/');
 
-    if (!is_a_single_video) {
-      document.getElementById('view-container').innerHTML = '';
-      document.querySelector('canvas').style.display = 'block';
-      this.applyThreeRoute();
-    } else {
-      document.getElementById('view-container').innerHTML = html;
-      document.querySelector('canvas').style.display = 'hidden';
-    }
-  } else {
-    document.getElementById('view-container').innerHTML = html;
-  }
-};
-
-Router.prototype.applyThreeRoute = function() {
-  if (typeof someVideos == 'object') {
-    var some_video_ids = _.pluck(someVideos, 'id');
-    _.each(video_cubes, function(cube) {
-      if (_.contains(some_video_ids, cube.userData.id)) {
-        var tween = new TWEEN.Tween(cube.scale).to({z: 1}, 3000).start();
+        if (!is_a_single_video) {
+          document.getElementById('view-container').innerHTML = '';
+          document.querySelector('canvas').style.display = 'block';
+        } else {
+          document.getElementById('view-container').innerHTML = html;
+          document.querySelector('canvas').style.display = 'hidden';
+        }
       } else {
-        var tween = new TWEEN.Tween(cube.scale).to({z: 0.67}, 3000).start();
+        document.getElementById('view-container').innerHTML = html;
       }
     });
   }
