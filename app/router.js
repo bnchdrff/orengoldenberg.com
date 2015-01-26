@@ -39,10 +39,6 @@ Router.prototype.parseRoutes = function(routesFn) {
   return routes;
 };
 
-Router.prototype.state = {
-  is_a_single_video: false
-};
-
 Router.prototype.getRouteHandler = function(handler) {
   var router = this;
 
@@ -119,21 +115,24 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 };
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
-    this.state.is_a_single_video = viewPath.match('videos\/');
+  if (window.video_cubes) {
+    var is_a_single_video = viewPath.match('videos\/');
 
-    if (this.state.is_a_single_video) {
-      if (document.querySelector('canvas') !== null) {
-        //document.querySelector('canvas').style.display = 'hidden';
-      }
-      document.getElementById('view-container').innerHTML = html;
-    } else {
+    if (!is_a_single_video) {
+      document.getElementById('view-container').innerHTML = '';
+      document.querySelector('canvas').style.display = 'block';
       this.applyThreeRoute();
+    } else {
+      document.getElementById('view-container').innerHTML = html;
+      document.querySelector('canvas').style.display = 'hidden';
     }
+  } else {
+    document.getElementById('view-container').innerHTML = html;
+  }
 };
 
 Router.prototype.applyThreeRoute = function() {
   if (typeof someVideos == 'object') {
-    window.Tricks.attach(window);
     var some_video_ids = _.pluck(someVideos, 'id');
     _.each(video_cubes, function(cube) {
       if (_.contains(some_video_ids, cube.userData.id)) {
