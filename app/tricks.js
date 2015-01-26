@@ -1,7 +1,9 @@
 // frontend tricks, as an example of using bootstrapped data for silly not-isomorphic stuff
 var _             = require('lodash'),
     TWEEN         = require('tween'),
-    THREE         = require('three');
+    THREE         = require('three'),
+    hostname      = process.env.HOSTNAME || 'detriot.org', // useless, @todo use envify
+    proxyport     = process.env.PROXY_PORT || 7779; // see above
 
 module.exports = Tricks;
 
@@ -87,7 +89,7 @@ Tricks.prototype.attach = function(window, cb) {
       var img = new Image();
       img.crossOrigin = "anonymous";
       // @todo read host from conf
-      img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', 'localhost:7779');
+      img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', hostname + ':' + proxyport);
       var tex = new THREE.Texture(img);
       img.tex = tex;
 
