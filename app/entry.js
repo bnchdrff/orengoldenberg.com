@@ -7,4 +7,4 @@ window.router = router;
 
 router.start(window.allVideos);
 
-var tricks = new Tricks(window);
+window.tricks = new Tricks(window);
