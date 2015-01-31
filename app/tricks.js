@@ -93,7 +93,7 @@ Tricks.prototype.attach = function(window, cb) {
       var img = new Image();
       img.crossOrigin = "anonymous";
       // @todo read host from conf
-      img.src = window.allVideos[thumb_idx].thumbnail_large.replace('i.vimeocdn.com', hostname + ':' + proxyport);
+      img.src =  _.find(window.allVideos[thumb_idx].pictures.sizes, { height: 360 }).link.replace('i.vimeocdn.com', hostname + ':' + proxyport);
       var tex = new THREE.Texture(img);
       img.tex = tex;
 

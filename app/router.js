@@ -6,8 +6,6 @@ var director       = require('director'),
     DirectorRouter = isServer ? director.http.Router : director.Router,
     DataHelper     = require('../lib/data-helper'),
     Videos         = new DataHelper(),
-    videos         = Videos.videos(),
-    tags           = Videos.all_tags(videos),
     friendlyCats   = require('../config.json').friendlyCats,
     firstRender    = true;
 
@@ -134,13 +132,12 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
-  var allVideos = videos;
 
   var locals = {
     body: html,
-    tags: tags,
+    tags: Videos.all_tags(),
     friendlyCats: friendlyCats,
-    allVideos: JSON.stringify(allVideos),
+    allVideos: JSON.stringify(Videos.getVideos()),
   };
 
   this.wrapWithLayout(locals, function(err, layoutHtml) {

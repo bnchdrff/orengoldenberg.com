@@ -8,6 +8,9 @@ module.exports = function(Handlebars) {
     },
     jsonstringify: function(obj) {
       return JSON.stringify(obj);
+    },
+    thumbnail_large: function(pictures) {
+      return _.find(pictures.sizes, { height: 360 }).link;
     }
   };
   function register() {
