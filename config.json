@@ -12,5 +12,6 @@
     "art documentation",
     "commercial",
     "non-profit"
-  ]
+  ],
+  "videos_json": "/tmp/og-videos.json"
 }
