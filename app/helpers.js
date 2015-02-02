@@ -13,12 +13,12 @@ module.exports = function(Handlebars) {
     },
     thumbnail_large: function(pictures) {
       if (typeof pictures == 'object' && pictures !== null && typeof pictures.sizes == 'object') {
-        var large = _.find(pictures.sizes, { height: 360 });
-        if (typeof large == 'object' && typeof large.link == 'string') {
-          return large.link;
+        var vimeo_src = _.find(pictures.sizes, { height: 360 });
+        if (vimeo_src) {
+          return vimeo_src.link;
         } else {
-          console.error('no link');
-          console.error(pictures);
+          // make our own thumb url... :/
+          return pictures.sizes[0].link.replace(/_\d+x\d+\.jpg$/, '_640x360.jpg');
         }
       } else {
         console.error('no sizes');

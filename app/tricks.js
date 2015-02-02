@@ -29,7 +29,9 @@ function webglAvailable() {
 
 Tricks.prototype.applyRoute = function() {
   if (typeof window.someVideos == 'object') {
-    var some_video_ids = _.pluck(window.someVideos, 'id');
+    var some_video_ids = _.map(_.pluck(window.someVideos, 'uri'), function(uri) {
+      return helpers.id_from_uri(uri);
+    });
     _.each(video_cubes, function(cube) {
       if (_.contains(some_video_ids, cube.userData.id)) {
         var tween = new TWEEN.Tween(cube.scale).to({z: 1}, 1700).start();
