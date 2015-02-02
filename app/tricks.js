@@ -2,6 +2,7 @@
 var _             = require('lodash'),
     TWEEN         = require('tween'),
     THREE         = require('three'),
+    helpers       = require('./helpers')().helpers,
     hostname      = process.env.HOSTNAME || 'detriot.org', // useless, @todo use envify
     proxyport     = process.env.PROXY_PORT || 7779; // see above
 
@@ -93,7 +94,15 @@ Tricks.prototype.attach = function(window, cb) {
       var img = new Image();
       img.crossOrigin = "anonymous";
       // @todo read host from conf
-      img.src =  _.find(window.allVideos[thumb_idx].pictures.sizes, { height: 360 }).link.replace('i.vimeocdn.com', hostname + ':' + proxyport);
+      var vimeo_src = _.find(window.allVideos[thumb_idx].pictures.sizes, { height: 360 });
+      if (vimeo_src) {
+        img.src = vimeo_src.link;
+      } else {
+        // make our own thumb url... :/
+        img.src = window.allVideos[thumb_idx].pictures.sizes[0].link.replace(/_\d+x\d+\.jpg$/, '_640x360.jpg');
+      }
+      // use our proxy
+      img.src = img.src.replace('i.vimeocdn.com', hostname + ':' + proxyport).replace('https', 'http');
       var tex = new THREE.Texture(img);
       img.tex = tex;
 
@@ -125,7 +134,7 @@ Tricks.prototype.attach = function(window, cb) {
       var material = new THREE.MeshFaceMaterial(materials);
       var cube = new THREE.Mesh(geometry, material);
 
-      cube.userData = {id: window.allVideos[thumb_idx].id};
+      cube.userData = {id: helpers.id_from_uri(window.allVideos[thumb_idx].uri)};
 
       cube.position.x = x;
       cube.position.y = y;

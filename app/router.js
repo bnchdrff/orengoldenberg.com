@@ -1,11 +1,11 @@
 var director       = require('director'),
+    apiClient      = require('./api_client'),
     isServer       = typeof window === 'undefined',
     _              = require('lodash/dist/lodash.underscore'),
     Handlebars     = isServer ? require('handlebars') : require('hbsfy/runtime'),
     viewsDir       = (isServer ? __dirname : 'app') + '/views',
     DirectorRouter = isServer ? director.http.Router : director.Router,
     DataHelper     = require('../lib/data-helper'),
-    Videos         = new DataHelper(),
     friendlyCats   = require('../config.json').friendlyCats,
     firstRender    = true;
 
@@ -132,16 +132,20 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
+  _self = this;
+  apiClient.get('/tags.json', function(tags) {
+    apiClient.get('/videos.json', function(videos) {
+      var locals = {
+        body: html,
+        tags: tags.body,
+        friendlyCats: friendlyCats,
+        allVideos: JSON.stringify(videos.body),
+      };
 
-  var locals = {
-    body: html,
-    tags: Videos.all_tags(),
-    friendlyCats: friendlyCats,
-    allVideos: JSON.stringify(Videos.getVideos()),
-  };
-
-  this.wrapWithLayout(locals, function(err, layoutHtml) {
-    res.send(layoutHtml);
+      _self.wrapWithLayout(locals, function(err, layoutHtml) {
+        res.send(layoutHtml);
+      });
+    });
   });
 };
 
