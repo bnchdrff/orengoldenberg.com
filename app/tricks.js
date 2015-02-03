@@ -194,7 +194,7 @@ Tricks.prototype.attach = function(window, cb) {
     }
 
     camera.position.set(7.6, -7.69, 13.6);
-    camera.rotation.set(-.2, .6, .07);
+    camera.rotation.set(-.23, .6, .07);
 
     var render = function() {
       requestAnimationFrame(render);
