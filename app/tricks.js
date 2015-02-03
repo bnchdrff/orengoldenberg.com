@@ -214,16 +214,21 @@ Tricks.prototype.attach = function(window, cb) {
       d = .1 * ((d > 0) ? 1 : -1);
 
       var cPos = camera.position;
-      if (isNaN(cPos.x) || isNaN(cPos.y) || isNaN(cPos.z))
+      if (isNaN(cPos.y))
         return;
 
-      var r = cPos.x*cPos.x + cPos.y*cPos.y;
-      var sqr = Math.sqrt(r);
+      var rows = Math.ceil(video_cubes.length/3) + 1;
 
-      var ny = cPos.y + ((r==0)?0:(d * cPos.y/sqr));
+      var ny = cPos.y + d;
 
       if (isNaN(ny))
         return;
+
+      if (ny > 0)
+        ny = 0;
+
+      if (ny < rows * -1)
+        ny = rows * -1;
 
       cPos.y = ny;
     }
