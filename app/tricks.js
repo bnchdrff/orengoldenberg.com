@@ -11,7 +11,7 @@ module.exports = Tricks;
 function Tricks(window) {
   this.is_videolist = (window.location.pathname == '/videos'
                     || window.location.pathname.substr(0,15) == '/videos-tagged/');
-  this.using_three = webglAvailable();
+  this.using_three = webglAvailable() && !('ontouchstart' in window);
 
   if (this.using_three && this.is_videolist) {
     this.attach(window);
