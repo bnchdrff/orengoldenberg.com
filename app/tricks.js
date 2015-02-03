@@ -15,6 +15,8 @@ function Tricks(window) {
 
   if (this.using_three && this.is_videolist) {
     this.attach(window);
+  } else {
+    document.getElementById('view-container').style.display = 'block';
   }
 }
 

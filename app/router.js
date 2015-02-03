@@ -121,17 +121,20 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
           window.tricks.reattach();
         } else {
           document.getElementById('view-container').innerHTML = html;
+          document.getElementById('view-container').style.display = 'block';
           window.tricks.detach();
         }
       } else {
         document.getElementById('view-container').innerHTML = html;
+        document.getElementById('view-container').style.display = 'block';
       }
     });
   } else {
-    document.getElementById('view-container').innerHTML = html;
     if (typeof window.scene == 'object') {
       window.tricks.detach();
     }
+    document.getElementById('view-container').innerHTML = html;
+    document.getElementById('view-container').style.display = 'block';
   }
 };
 

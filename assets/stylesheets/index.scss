@@ -16,6 +16,12 @@ $fa-font-path: "/bower/font-awesome/fonts";
   font-size: 80%;
 }
 
+/* app */
+
+#view-container {
+  display: none;
+}
+
 /* Fonts */
 
 @font-face {font-family: 'NovecentoSans';font-weight: bold;font-style: normal;src: url('/fonts/novecentosans/2A556A_0_0.eot');src: url('/fonts/novecentosans/2A556A_0_0.eot?#iefix') format('embedded-opentype'),url('/fonts/novecentosans/2A556A_0_0.woff') format('woff'),url('/fonts/novecentosans/2A556A_0_0.ttf') format('truetype'),url('/fonts/novecentosans/2A556A_0_0.svg#wf') format('svg');}
