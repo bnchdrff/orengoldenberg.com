@@ -9,8 +9,11 @@ var _             = require('lodash'),
 module.exports = Tricks;
 
 function Tricks(window) {
-  var is_single_video = (window.location.pathname.substr(0,8) == '/videos/');
-  if (webglAvailable() && !is_single_video) {
+  this.is_videolist = (window.location.pathname == '/videos'
+                    || window.location.pathname.substr(0,15) == '/videos-tagged/');
+  this.using_three = webglAvailable();
+
+  if (this.using_three && this.is_videolist) {
     this.attach(window);
   }
 }
@@ -96,13 +99,7 @@ Tricks.prototype.attach = function(window, cb) {
       var img = new Image();
       img.crossOrigin = "anonymous";
       // @todo read host from conf
-      var vimeo_src = _.find(window.allVideos[thumb_idx].pictures.sizes, { height: 360 });
-      if (vimeo_src) {
-        img.src = vimeo_src.link;
-      } else {
-        // make our own thumb url... :/
-        img.src = window.allVideos[thumb_idx].pictures.sizes[0].link.replace(/_\d+x\d+\.jpg$/, '_640x360.jpg');
-      }
+      img.src = helpers.thumbnail_large(window.allVideos[thumb_idx].pictures);
       // use our proxy
       img.src = img.src.replace('i.vimeocdn.com', hostname + ':' + proxyport).replace('https', 'http');
       var tex = new THREE.Texture(img);

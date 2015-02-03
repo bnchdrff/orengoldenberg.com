@@ -112,22 +112,26 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 };
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
-  if (viewPath != 'video') {
+  var is_videolist = (viewPath !== 'page' && viewPath !== 'video');
+  if (window.tricks.using_three && is_videolist) {
     window.tricks.attach(window, function() {
       if (window.video_cubes) {
-        var is_a_single_video = viewPath.match('videos\/');
-
-        if (!is_a_single_video) {
+        if (is_videolist) {
           document.getElementById('view-container').innerHTML = '';
-          document.querySelector('canvas').style.display = 'block';
+          window.scene.visible = true;
         } else {
           document.getElementById('view-container').innerHTML = html;
-          document.querySelector('canvas').style.display = 'hidden';
+          window.scene.visible = false;
         }
       } else {
         document.getElementById('view-container').innerHTML = html;
       }
     });
+  } else {
+    document.getElementById('view-container').innerHTML = html;
+    if (typeof window.scene == 'object') {
+      window.scene.visible = false;
+    }
   }
 };
 
