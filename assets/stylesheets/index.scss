@@ -38,7 +38,7 @@ body {
 }
 
 .row {
-  max-width: 1200px;
+  max-width: 90%;
 }
 
 .panel {
@@ -211,6 +211,7 @@ strong {
 
   .row {
     overflow: hidden;
+    margin: 0 auto 0 0;
   }
 
   .row .row {
@@ -295,3 +296,17 @@ strong {
 
 }
 
+.threed {
+  overflow: hidden;
+
+  [role="main"] {
+    padding-right: 0;
+  }
+
+  .row {
+    max-width: 100%;
+    .row {
+      margin: 0;
+    }
+  }
+}

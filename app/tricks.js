@@ -45,17 +45,21 @@ Tricks.prototype.applyRoute = function() {
   }
 };
 
-Tricks.prototype.attach = function(window, cb) {
+Tricks.prototype.detach = function() {
+  window.document.body.className = '';
+  window.scene.visible = false;
+};
+
+Tricks.prototype.reattach = function() {
+  window.document.body.className = 'threed';
+  window.scene.visible = true;
+};
+
+Tricks.prototype.attach = function(cb) {
+  window.document.body.className = 'threed';
+
   window.THREE = (window.THREE) ? window.THREE : THREE;
   window._ = (window._) ? window._ : _;
-
-  // style hacks for now
-  $('body').css({
-    overflow: 'hidden'
-  });
-  $('.row').css({
-    maxWidth: '100%'
-  });
 
   var has_been_threed = (typeof window.video_cubes == 'object');
 
@@ -86,11 +90,11 @@ Tricks.prototype.attach = function(window, cb) {
     container.appendChild(renderer.domElement);
 
     // Create light
-    var dlight = new THREE.DirectionalLight(0xffffff, 0.99);
-    dlight.position.set( .5, 1, -1);
+    var dlight = new THREE.DirectionalLight(0xf8f7f5, 0.99);
+    dlight.position.set(.5, 3, -2);
     scene.add(dlight);
-    var blight = new THREE.DirectionalLight(0xffffff, 0.99);
-    blight.position.set( .5, 1, -1);
+    var blight = new THREE.DirectionalLight(0xf8f7f5, 0.99);
+    blight.position.set(.5, -5, -3);
     scene.add(blight);
 
     // Create a single cube with position x,y,z calculated by args i,j,k
@@ -109,8 +113,8 @@ Tricks.prototype.attach = function(window, cb) {
         this.tex.needsUpdate = true;
       };
 
-      var bgcolor = 0xf8f7f5;
-      var fgcolor = 0xffffff;
+      var bgcolor = 0xf8f7f5
+      var fgcolor = 0xf8f7f5;
 
       var bg_opts = {
         color: bgcolor,
@@ -192,7 +196,7 @@ Tricks.prototype.attach = function(window, cb) {
       }
     }
 
-    camera.position.set(7.6, -7.69, 13.6);
+    camera.position.set(7.6, 0, 13.6);
     camera.rotation.set(-.23, .6, .07);
 
     var render = function() {

@@ -114,14 +114,14 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 Router.prototype.handleClientRoute = function(viewPath, html) {
   var is_videolist = (viewPath !== 'page' && viewPath !== 'video');
   if (window.tricks.using_three && is_videolist) {
-    window.tricks.attach(window, function() {
+    window.tricks.attach(function() {
       if (window.video_cubes) {
         if (is_videolist) {
           document.getElementById('view-container').innerHTML = '';
-          window.scene.visible = true;
+          window.tricks.reattach();
         } else {
           document.getElementById('view-container').innerHTML = html;
-          window.scene.visible = false;
+          window.tricks.detach();
         }
       } else {
         document.getElementById('view-container').innerHTML = html;
@@ -130,7 +130,7 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
   } else {
     document.getElementById('view-container').innerHTML = html;
     if (typeof window.scene == 'object') {
-      window.scene.visible = false;
+      window.tricks.detach();
     }
   }
 };
