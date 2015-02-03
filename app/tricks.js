@@ -164,8 +164,7 @@ Tricks.prototype.attach = function(window, cb) {
 
       if (intersects.length > 0) {
         var video_id = intersects[0].object.userData.id;
-        //console.log(_.where(allVideos, {id: video_id})[0].title);
-        window.location.pathname = '/videos/' + video_id;
+        router.setRoute('/videos/' + video_id);
       }
     });
 
