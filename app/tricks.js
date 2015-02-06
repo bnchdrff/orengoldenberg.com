@@ -73,7 +73,7 @@ Tricks.prototype.attach = function(cb) {
     $('#view-container ul').hide();
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 1000);
+    var camera = new THREE.PerspectiveCamera(25, width/height, 1, 1000);
     if (webglAvailable()) {
       var renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
     } else {
@@ -198,8 +198,8 @@ Tricks.prototype.attach = function(cb) {
       }
     }
 
-    camera.position.set(7.6, 0, 13.6);
-    camera.rotation.set(-.23, .6, .07);
+    camera.position.set(13.5, 1, 21);
+    camera.rotation.set(-0.23, .6, .13);
 
     var render = function() {
       requestAnimationFrame(render);
