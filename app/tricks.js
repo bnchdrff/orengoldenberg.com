@@ -35,8 +35,8 @@ function webglAvailable() {
 Tricks.prototype.setOnResize = function() {
   var wh = this.calculateWidthHeight(this.container);
   window.renderer.setSize(wh.width, wh.height);
-  camera.aspect = wh.width / wh.height;
-  camera.updateProjectionMatrix();
+  window.camera.aspect = wh.width / wh.height;
+  window.camera.updateProjectionMatrix();
 };
 
 Tricks.prototype.applyRoute = function() {
