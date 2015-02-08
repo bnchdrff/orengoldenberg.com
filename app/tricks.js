@@ -32,6 +32,13 @@ function webglAvailable() {
   }
 }
 
+Tricks.prototype.setOnResize = function() {
+  var wh = this.calculateWidthHeight(this.container);
+  window.renderer.setSize(wh.width, wh.height);
+  camera.aspect = wh.width / wh.height;
+  camera.updateProjectionMatrix();
+};
+
 Tricks.prototype.applyRoute = function() {
   if (typeof window.someVideos == 'object') {
     var some_video_ids = _.map(_.pluck(window.someVideos, 'uri'), function(uri) {
@@ -57,6 +64,18 @@ Tricks.prototype.reattach = function() {
   window.scene.visible = true;
 };
 
+/**
+ * @return object
+ *   {width: width, height: height}
+ */
+Tricks.prototype.calculateWidthHeight = function() {
+  if (this.container) {
+    var width = this.container.offsetWidth;
+    var height = window.innerHeight - this.container.offsetTop;
+    return {width: width, height: height};
+  }
+};
+
 Tricks.prototype.attach = function(cb) {
   window.document.body.className = 'threed';
 
@@ -66,9 +85,10 @@ Tricks.prototype.attach = function(cb) {
   var has_been_threed = (typeof window.video_cubes == 'object');
 
   if (!has_been_threed) {
-    var container = document.querySelector('section > div.row');
-    var width = container.offsetWidth;
-    var height = window.innerHeight - container.offsetTop;
+    this.container = document.querySelector('section > div.row');
+    var wh = this.calculateWidthHeight();
+    var width = wh.width;
+    var height = wh.height;
 
     $('#view-container ul').hide();
 
@@ -89,7 +109,7 @@ Tricks.prototype.attach = function(cb) {
 
     renderer.setSize(width, height);
 
-    container.appendChild(renderer.domElement);
+    this.container.appendChild(renderer.domElement);
 
     // Create light
     var dlight = new THREE.DirectionalLight(0xf8f7f5, 0.99);
@@ -237,6 +257,8 @@ Tricks.prototype.attach = function(cb) {
 
     document.body.addEventListener('mousewheel', mousewheel, false);
     document.body.addEventListener('DOMMouseScroll', mousewheel, false);
+
+    window.addEventListener('resize', _.bind(this.setOnResize, this), false);
 
     create_cubes(window.allVideos.length);
   }
