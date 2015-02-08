@@ -10,6 +10,7 @@ Requirements:
 * ruby, gem, bundle: you're on your own, or see INSTALL-osx.sh for OS X suggestions
 * grunt: `npm install -g grunt-cli`
 * bower: `npm install -g bower`
+* mocha: `npm install -g mocha`
 
 ```
 git clone REPO
