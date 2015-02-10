@@ -14,7 +14,7 @@ function Tricks(window) {
   this.using_three = webglAvailable() && !('ontouchstart' in window);
 
   if (this.using_three && this.is_videolist) {
-    this.attach(window);
+    this.attach();
   } else {
     document.getElementById('view-container').style.display = 'block';
   }
