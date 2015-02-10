@@ -1,39 +1,15 @@
-
-  <div id="single-video" class=" ">
-
+  <div id="single-video">
     <div class="vimeo-video">
       <iframe src="//player.vimeo.com/video/{{{id_from_uri uri}}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
       </iframe>
     </div>
-
     <div id="single-video-info-box" class="row panel">
-
       <div id="single-video-info-box-text" class="small-12 large-7 columns">
-
-        <h2>{{title}} <a href="#" title="Send a message"><i class="fa fa-envelope social-icons"></i></a> <a href="#"><i class="fa fa-share social-icons" title="Share video"></i></a></h2>
-
-        <!--
-
-        Currently no description for most videos.
-        If no description, #unless code will display placeholder text.
-
-        Using a description may be a flaw in the design?
-        Talk to Oren about using descriptions.
-
-        -->
-
+        <h2>{{title}}<h2>
         <p>{{{description}}}</p>
-
         {{#unless description}}
-
           <p>No description.</p>
-
         {{/unless}}
-
-
-
-      </div><!-- single-video-info-text -->
-
-    </div><!-- single-video-info -->
-
-  </div><!-- single-video -->
+      </div>
+    </div>
+  </div>
