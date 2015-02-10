@@ -22,9 +22,6 @@ public/*.css
 .sass-cache
 *.sass
 
-assets/videos.json
-assets/videos??.json
-
 secrets.json
 
 bower_components
