@@ -19,7 +19,7 @@ describe('helpers', function() {
       var dh = require('../lib/data-helper'),
           DH = new dh(),
           rand_vid = Math.floor(Math.random() * DH.videos.length);
-      helpers.thumbnail_large(DH.videos[30].pictures).should.match(/.*640x360\.jpg$/);
+      helpers.thumbnail_large(DH.videos[rand_vid].pictures).should.match(/.*640x360\.jpg$/);
     });
   });
 });
