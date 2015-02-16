@@ -1,3 +1,3 @@
-title: Contact
+[ogoldenberg@gmail.com](mailto:ogoldenberg@gmail.com)
 
-[Email Oren](mailto:oren@orengoldenberg.com)
+248.224.9063
