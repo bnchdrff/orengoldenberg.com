@@ -1,11 +1,11 @@
 {
   "chosen_tags": [
     "movement",
-    "verse",
-    "public space",
     "satire",
-    "documentation",
-    "detroit"
+    "space",
+    "verse",
+    "detroit",
+    "documentation"
   ],
   "friendlyCats": [
     "documentary",
@@ -13,5 +13,5 @@
     "commercial",
     "non-profit"
   ],
-  "videos_json": "/tmp/og-videos.json"
+  "videos_json": "/tmp/og-videos"
 }
