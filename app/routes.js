@@ -19,8 +19,8 @@ module.exports = function(match) {
 
   match('/videos/:id', function(id, callback) {
     apiClient.get('/videos/' + id + '.json', function(err, res) {
-      if (err) {
-        return callback(err);
+      if (err || res.error) {
+        return callback(err || res.error);
       }
       var video = res.body;
       callback(null, 'video', video);
