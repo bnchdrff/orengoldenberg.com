@@ -3,7 +3,7 @@ var _             = require('lodash'),
     TWEEN         = require('tween'),
     THREE         = require('three'),
     helpers       = require('./helpers')().helpers,
-    hostname      = process.env.HOSTNAME || 'detriot.org', // useless, @todo use envify
+    hostname      = process.env.HOSTNAME || 'localhost', // useless, @todo use envify
     proxyport     = process.env.PROXY_PORT || 7779; // see above
 
 module.exports = Tricks;
@@ -60,8 +60,8 @@ Tricks.prototype.mousewheel = function(e) {
   if (ny > this.defaults.camera_pos.y)
     ny = this.defaults.camera_pos.y;
 
-  if (ny < rows * -1)
-    ny = rows * -1;
+  if (ny < rows * -1 - 2)
+    ny = rows * -1 - 2;
 
   cPos.y = ny;
 };
