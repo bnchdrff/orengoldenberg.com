@@ -3,16 +3,13 @@ var _             = require('lodash'),
     TWEEN         = require('tween'),
     THREE         = require('three'),
     helpers       = require('./helpers')().helpers,
+    friendlyCats  = require('../config.json').friendlyCats,
     hostname      = process.env.HOSTNAME || 'localhost', // useless, @todo use envify
     proxyport     = process.env.PROXY_PORT || 7779; // see above
 
 module.exports = Tricks;
 
 function Tricks(window) {
-  this.is_videolist = (window.location.pathname == '/videos'
-                    || window.location.pathname.substr(0,15) == '/videos-tagged/');
-  this.using_three = webglAvailable() && !('ontouchstart' in window);
-
   this.defaults = {
     camera_pos: {
       x: 13.5,
@@ -21,7 +18,7 @@ function Tricks(window) {
     }
   };
 
-  if (this.using_three && this.is_videolist) {
+  if (this.should_do_tricks()) {
     this.attach();
   } else {
     document.getElementById('view-container').style.display = 'block';
@@ -39,6 +36,26 @@ function webglAvailable() {
     return false;
   }
 }
+
+Tricks.prototype.should_do_tricks = function() {
+  this.is_videolist = (window.location.pathname == '/videos'
+                    || window.location.pathname == '/'
+                    || window.location.pathname.substr(0,15) == '/videos-tagged/')
+                    && (!_.contains(friendlyCats, decodeURI(window.location.pathname.substr(15))));
+  this.using_three = webglAvailable() && !('ontouchstart' in window);
+
+  return (this.is_videolist && this.using_three);
+};
+
+Tricks.prototype.markActiveLinks = function() {
+  $('a').each(function() {
+    if ($(this).attr('href') === window.location.pathname) {
+      $(this).addClass('active');
+    } else {
+      $(this).removeClass('active');
+    }
+  });
+};
 
 // mouse scroll biz
 // like http://stackoverflow.com/questions/12636370/three-js-zoom-in-out-complete-tube-geometry
@@ -74,6 +91,9 @@ Tricks.prototype.setOnResize = function() {
 };
 
 Tricks.prototype.applyRoute = function() {
+  if (!this.should_do_tricks()) {
+    this.detach();
+  }
   if (typeof window.someVideos == 'object') {
     var some_video_ids = _.map(_.pluck(window.someVideos, 'uri'), function(uri) {
       return helpers.id_from_uri(uri);
@@ -91,6 +111,8 @@ Tricks.prototype.applyRoute = function() {
 Tricks.prototype.detach = function() {
   window.document.body.className = '';
   window.scene.visible = false;
+  $('#view-container ul').show();
+  document.getElementById('view-container').style.display = 'block';
 };
 
 Tricks.prototype.reattach = function() {

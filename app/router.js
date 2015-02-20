@@ -113,7 +113,7 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
 
 Router.prototype.handleClientRoute = function(viewPath, html) {
   var is_videolist = (viewPath !== 'page' && viewPath !== 'video');
-  if (window.tricks.using_three && is_videolist) {
+  if (window.tricks.should_do_tricks() && is_videolist) {
     window.tricks.attach(function() {
       if (window.video_cubes) {
         if (is_videolist) {
@@ -136,6 +136,8 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
     document.getElementById('view-container').innerHTML = html;
     document.getElementById('view-container').style.display = 'block';
   }
+
+  window.tricks.markActiveLinks();
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {

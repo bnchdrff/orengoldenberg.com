@@ -110,6 +110,7 @@ strong {
   li {
     a {
       color: #fff;
+      &.active,
       &:hover {
         color: #7C8EAA;
       }

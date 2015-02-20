@@ -4,7 +4,13 @@ var apiClient = require('./api_client'),
 
 module.exports = function(match) {
   match('/', function(callback) {
-    callback(null, 'index');
+    apiClient.get('/videos.json', function(err, res) {
+      if (err) {
+        return callback(err);
+      }
+      var videos = res.body;
+      callback(null, 'videos', {videos: videos});
+    });
   });
 
   match('/videos', function(callback) {

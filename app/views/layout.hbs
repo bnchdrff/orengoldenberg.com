@@ -62,9 +62,7 @@ window.allVideos = {{{allVideos}}};
     $('a:not(.toggle-menu)').on('click', function(e) {
       $('body').removeClass('active');
     });
-    if (window.location.pathname == '/') {
-      $('body').addClass('active');
-    }
+    window.tricks.markActiveLinks();
   });
 </script>
 </body>
