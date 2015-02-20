@@ -139,17 +139,17 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
-  _self = this;
+  var self = this;
   apiClient.get('/tags.json', function(tags) {
     apiClient.get('/videos.json', function(videos) {
       var locals = {
         body: html,
         tags: tags.body,
         friendlyCats: friendlyCats,
-        allVideos: JSON.stringify(videos.body),
+        allVideos: JSON.stringify(videos.body)
       };
 
-      _self.wrapWithLayout(locals, function(err, layoutHtml) {
+      self.wrapWithLayout(locals, function(err, layoutHtml) {
         res.send(layoutHtml);
       });
     });
