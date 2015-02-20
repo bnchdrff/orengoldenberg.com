@@ -13,6 +13,14 @@ function Tricks(window) {
                     || window.location.pathname.substr(0,15) == '/videos-tagged/');
   this.using_three = webglAvailable() && !('ontouchstart' in window);
 
+  this.defaults = {
+    camera_pos: {
+      x: 13.5,
+      y: 1,
+      z: 21
+    }
+  };
+
   if (this.using_three && this.is_videolist) {
     this.attach();
   } else {
@@ -31,6 +39,32 @@ function webglAvailable() {
     return false;
   }
 }
+
+// mouse scroll biz
+// like http://stackoverflow.com/questions/12636370/three-js-zoom-in-out-complete-tube-geometry
+Tricks.prototype.mousewheel = function(e) {
+  var d = ((typeof e.wheelDelta != "undefined") ? (-e.wheelDelta) : e.detail);
+  d = .1 * ((d > 0) ? 1 : -1);
+
+  var cPos = camera.position;
+  if (isNaN(cPos.y))
+    return;
+
+  var rows = Math.ceil(video_cubes.length/3) + 1;
+
+  var ny = cPos.y + d;
+
+  if (isNaN(ny))
+    return;
+
+  if (ny > this.defaults.camera_pos.y)
+    ny = this.defaults.camera_pos.y;
+
+  if (ny < rows * -1)
+    ny = rows * -1;
+
+  cPos.y = ny;
+};
 
 Tricks.prototype.setOnResize = function() {
   var wh = this.calculateWidthHeight(this.container);
@@ -218,7 +252,7 @@ Tricks.prototype.attach = function(cb) {
       }
     }
 
-    camera.position.set(13.5, 1, 21);
+    camera.position.set(this.defaults.camera_pos.x, this.defaults.camera_pos.y, this.defaults.camera_pos.z);
     camera.rotation.set(-0.23, .6, .13);
 
     var render = function() {
@@ -229,34 +263,8 @@ Tricks.prototype.attach = function(cb) {
 
     render();
 
-    // mouse scroll biz
-    // like http://stackoverflow.com/questions/12636370/three-js-zoom-in-out-complete-tube-geometry
-    var mousewheel = function(e) {
-      var d = ((typeof e.wheelDelta != "undefined") ? (-e.wheelDelta) : e.detail);
-      d = .1 * ((d > 0) ? 1 : -1);
-
-      var cPos = camera.position;
-      if (isNaN(cPos.y))
-        return;
-
-      var rows = Math.ceil(video_cubes.length/3) + 1;
-
-      var ny = cPos.y + d;
-
-      if (isNaN(ny))
-        return;
-
-      if (ny > 0)
-        ny = 0;
-
-      if (ny < rows * -1)
-        ny = rows * -1;
-
-      cPos.y = ny;
-    }
-
-    document.body.addEventListener('mousewheel', mousewheel, false);
-    document.body.addEventListener('DOMMouseScroll', mousewheel, false);
+    document.body.addEventListener('mousewheel', _.bind(this.mousewheel, this), false);
+    document.body.addEventListener('DOMMouseScroll', _.bind(this.mousewheel, this), false);
 
     window.addEventListener('resize', _.bind(this.setOnResize, this), false);
 
