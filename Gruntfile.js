@@ -3,12 +3,6 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    curl: {
-      'assets/videos-1.json': 'http://vimeo.com/api/v2/user5904516/videos.json',
-      'assets/videos-2.json': 'http://vimeo.com/api/v2/user5904516/videos.json?page=2',
-      'assets/videos-3.json': 'http://vimeo.com/api/v2/user5904516/videos.json?page=3'
-    },
-
     browserify: {
       prod: {
         options: {
@@ -128,13 +122,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-curl');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-node-inspector');
 
-  grunt.registerTask('compile', ['curl', 'browserify:prod', 'compass:prod']);
+  grunt.registerTask('compile', ['browserify:prod', 'compass:prod']);
   grunt.registerTask('compile:devel', ['browserify:devel', 'compass:devel']);
   grunt.registerTask('default', ['compile']);
   grunt.registerTask('server', ['compile', 'concurrent']);
