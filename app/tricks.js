@@ -1,5 +1,6 @@
 // frontend tricks, as an example of using bootstrapped data for silly not-isomorphic stuff
 var _             = require('lodash'),
+    zeroclip      = require('zeroclipboard'),
     TWEEN         = require('tween'),
     THREE         = require('three'),
     helpers       = require('./helpers')().helpers,
@@ -54,6 +55,17 @@ Tricks.prototype.markActiveLinks = function() {
     } else {
       $(this).removeClass('active');
     }
+  });
+};
+
+Tricks.prototype.clipifyClippers = function() {
+  console.log('zeroclippin');
+  zeroclip.config({swfPath: "/zeroclipboard/ZeroClipboard.swf"});
+  var els = document.querySelector('.copylink');
+  var client = new zeroclip(els);
+  client.on("copy", function (ev) {
+    var clipboard = ev.clipboardData;
+    clipboard.setData("text/plain", window.location.href);
   });
 };
 

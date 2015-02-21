@@ -178,20 +178,18 @@ strong {
   font-weight: bold;
 }
 
-#social-links {
-  margin-top: 2rem;
-  padding-left: 2rem;
-}
-
-
-#social-links li {
-  letter-spacing: .05rem;
-  margin-bottom: .5rem;
-}
-
-.social-icons {
+.copylink {
   float: right;
   margin-left: .7rem;
+  margin: 0 0 0 .7rem;
+  padding: 0;
+  background: transparent;
+  color: #333333;
+  &.zeroclipboard-is-hover {
+    color: #333333;
+    background: transparent;
+    text-shadow: #aaa -1px -1px;
+  }
 }
 
 

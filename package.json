@@ -26,7 +26,8 @@
     "superagent": "~0.15.7",
     "three": "~0.68.0",
     "tween": "~0.9.0",
-    "vimeo-api": "^1.1.1"
+    "vimeo-api": "^1.1.1",
+    "zeroclipboard": "^2.2.0"
   },
   "devDependencies": {
     "blanket": "^1.1.6",

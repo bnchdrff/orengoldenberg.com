@@ -138,6 +138,7 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
   }
 
   window.tricks.markActiveLinks();
+  window.tricks.clipifyClippers();
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
