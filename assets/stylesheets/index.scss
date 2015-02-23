@@ -180,15 +180,29 @@ strong {
 
 .copylink {
   float: right;
-  margin-left: .7rem;
+  position: relative;
   margin: 0 0 0 .7rem;
   padding: 0;
   background: transparent;
   color: #333333;
+  &:hover,
+  &:active,
+  &:focus,
   &.zeroclipboard-is-hover {
     color: #333333;
     background: transparent;
     text-shadow: #aaa -1px -1px;
+    outline: none;
+  }
+  span {
+    display: none;
+    position: absolute;
+    top: 2em;
+    right: 0;
+    width: 20em;
+    text-transform: uppercase;
+    font-size: 10px;
+    text-align: right;
   }
 }
 

@@ -59,13 +59,16 @@ Tricks.prototype.markActiveLinks = function() {
 };
 
 Tricks.prototype.clipifyClippers = function() {
-  console.log('zeroclippin');
   zeroclip.config({swfPath: "/zeroclipboard/ZeroClipboard.swf"});
   var els = document.querySelector('.copylink');
   var client = new zeroclip(els);
   client.on("copy", function (ev) {
     var clipboard = ev.clipboardData;
     clipboard.setData("text/plain", window.location.href);
+    var $notice = $(this.elements()[0]).find('span');
+    $notice.fadeIn(500, function() {
+      $notice.delay(5000).fadeOut();
+    });
   });
 };
 
