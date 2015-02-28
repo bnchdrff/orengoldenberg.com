@@ -92,7 +92,11 @@ a {
 }
 
 #view-container > p {
-  margin: 4.5em 15% 0 15%;
+  margin: 1em 15%;
+}
+
+#view-container > p:first-child {
+  margin-top: 4.5em;
 }
 
 ul {
