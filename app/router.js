@@ -201,7 +201,7 @@ Router.prototype.start = function(allVideos) {
 
     var is_our_link = (el && el.nodeName === 'A' && (passThru == false));
     var isnt_our_link = (el && el.nodeName === 'A' && (passThru == true))
-                      || el.attributes.href.value.substr(0,4) === 'http';
+                      || (el.href.substr(0, window.location.origin.length) !== window.location.origin);
 
     if (isnt_our_link) {
       window.location = el.attributes.href.value;
