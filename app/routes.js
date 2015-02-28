@@ -19,6 +19,9 @@ module.exports = function(match) {
         return callback(err);
       }
       var videos = res.body;
+      if (!isServer) {
+        window.someVideos = videos;
+      }
       callback(null, 'videos', {videos: videos});
     });
   });
