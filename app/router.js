@@ -194,13 +194,18 @@ Router.prototype.start = function(allVideos) {
       if (eltest.tagName === 'A') {
         el = eltest;
         passThru = (el && el.dataset && el.dataset.passThru == 'true') ? true : false;
+      } else {
+        return;
       }
     }
 
     var is_our_link = (el && el.nodeName === 'A' && (passThru == false));
-    var isnt_our_link = (el && el.nodeName === 'A' && (passThru == false));
+    var isnt_our_link = (el && el.nodeName === 'A' && (passThru == true))
+                      || el.attributes.href.value.substr(0,4) === 'http';
 
-    if (is_our_link) {
+    if (isnt_our_link) {
+      window.location = el.attributes.href.value;
+    } else if (is_our_link) {
       if (document.body.className.indexOf('active') > -1
           && el.parentElement.className.indexOf('vid-thumbs') > -1) {
         // disable other clicks and let our jquery catch em
@@ -209,9 +214,6 @@ Router.prototype.start = function(allVideos) {
         this.directorRouter.setRoute(el.attributes.href.value);
         e.preventDefault();
       }
-    }
-    if (isnt_our_link) {
-      e.preventDefault();
     }
   }.bind(this), true);
 
