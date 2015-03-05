@@ -5,4 +5,6 @@ ranges from experimental dance to political satire, social documentary to
 feature film, multi-media installations to fake kickstarter videos.  He is
 Cass Corridor Films.
 
-The website was built by [Benjamin Chodoroff](https://detriot.org).
+
+
+This website was built by [Benjamin Chodoroff](https://detriot.org).
