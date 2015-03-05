@@ -124,14 +124,14 @@ Tricks.prototype.applyRoute = function() {
 };
 
 Tricks.prototype.detach = function() {
-  window.document.body.className = '';
+  $('body').removeClass('threed');
   window.scene.visible = false;
   $('#view-container ul').show();
   document.getElementById('view-container').style.display = 'block';
 };
 
 Tricks.prototype.reattach = function() {
-  window.document.body.className = 'threed';
+  $('body').addClass('threed');
   window.scene.visible = true;
 };
 

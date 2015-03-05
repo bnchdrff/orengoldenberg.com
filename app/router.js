@@ -199,6 +199,12 @@ Router.prototype.start = function(allVideos) {
       }
     }
 
+    if (el && el.dataset && el.dataset.toggle == 'true') {
+      return;
+    }
+
+    passThru = (el && el.dataset && el.dataset.passThru == 'true') ? true : false;
+
     var is_our_link = (el && el.nodeName === 'A' && (passThru == false));
     var isnt_our_link = (el && el.nodeName === 'A' && (passThru == true))
                       || (el.href.substr(0, window.location.origin.length) !== window.location.origin);
