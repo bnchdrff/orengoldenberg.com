@@ -1,10 +1,10 @@
   <div id="single-video">
     <div class="vimeo-video">
-      <iframe src="//player.vimeo.com/video/{{{id_from_uri uri}}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      <iframe src="//player.vimeo.com/video/{{{id_from_uri uri}}}?badge=0&byline=0&portrait=0&title=0&color=FFF" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
       </iframe>
     </div>
     <div id="single-video-info-box" class="row panel">
-      <div id="single-video-info-box-text" class="small-12 large-7 columns">
+      <div id="single-video-info-box-text" class="small-12 large-12 columns">
         <h2>{{name}} <button class="copylink" title="Copy this video's URL"><i class="fa fa-clipboard social-icons"></i><span>Link copied to clipboard</span></button></h2>
         {{#if description}}
           <p>{{{description}}}</p>
