@@ -14,7 +14,7 @@ function Tricks(window) {
   this.defaults = {
     camera_pos: {
       x: 13.5,
-      y: 1,
+      y: .8,
       z: 21
     }
   };

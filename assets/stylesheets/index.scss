@@ -39,7 +39,6 @@ body {
 }
 
 #main-wrapper {
-  margin-top: 2em;
   width: 100%;
 }
 
@@ -263,7 +262,7 @@ strong {
   [role="complementary"],
   [role="main"] {
     width: 100%;
-    padding: 0 15px;
+    padding: 2em 15px 0;
     display: block;
     position: relative;
     z-index: 1;
@@ -314,7 +313,6 @@ strong {
     width: 35%;
     margin-left: 0;
     float: left;
-    padding: 0 15px;
   }
 
   [role="main"] {
