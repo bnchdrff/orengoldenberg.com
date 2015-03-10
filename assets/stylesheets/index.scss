@@ -98,7 +98,8 @@ a {
   margin: 3em 15%;
 }
 
-#view-container > p:first-child {
+#view-container > p:first-child,
+#view-container > div#single-video {
   margin-top: 4.5em;
 }
 
