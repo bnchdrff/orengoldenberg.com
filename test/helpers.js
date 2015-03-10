@@ -17,13 +17,17 @@ describe('helpers', function() {
     });
   });
   describe('#thumbnail_large()', function() {
-    it('should output a large thumbnail for any vimeo video object', function() {
+    it('should generate a large thumbnail URI for a vimeo video object without the large thumbnail already in existence', function() {
       var dh = require('../lib/data-helper'),
           DH = new dh();
 
-      _.forEach(DH.videos, function(video) {
-        helpers.thumbnail_large(video.pictures).should.match(/.*640x360\.jpg$/);
-      });
+      helpers.thumbnail_large(DH.videos[1].pictures).should.match(/.*640x360\.jpg$/);
+    });
+    it('should output a large thumbnail URI for a vimeo video object with the size we want already in existence', function() {
+      var dh = require('../lib/data-helper'),
+          DH = new dh();
+
+      helpers.thumbnail_large(DH.videos[0].pictures).should.match(/.*640x360\.jpg$/);
     });
   });
 });
