@@ -22,6 +22,9 @@ if (process.env.NODE_ENV != 'production') {
   app.use('/assets', express.static(__dirname + '/assets'));
 }
 
+// favicon
+app.use('/favicon.ico', function(req, res) { res.sendfile(__dirname + '/assets/favicon.ico'); });
+
 app.use(router.middleware());
 
 app.use('/api', api.proxyMiddleware(apiPort));
