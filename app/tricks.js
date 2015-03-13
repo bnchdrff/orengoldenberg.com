@@ -72,12 +72,27 @@ Tricks.prototype.clipifyClippers = function() {
   });
 };
 
-// mouse scroll biz
-// like http://stackoverflow.com/questions/12636370/three-js-zoom-in-out-complete-tube-geometry
 Tricks.prototype.mousewheel = function(e) {
   var d = ((typeof e.wheelDelta != "undefined") ? (-e.wheelDelta) : e.detail);
   d = .1 * ((d > 0) ? 1 : -1);
 
+  this.scroll(d);
+};
+
+Tricks.prototype.keyboard = function(e) {
+  e = e || window.event;
+
+  if (e.keyCode == '38') {
+    // up
+    this.scroll(.1);
+  }
+  else if (e.keyCode == '40') {
+    // down
+    this.scroll(-.1);
+  }
+}
+
+Tricks.prototype.scroll = function(d) {
   var cPos = camera.position;
   if (isNaN(cPos.y))
     return;
@@ -302,6 +317,8 @@ Tricks.prototype.attach = function(cb) {
 
     document.body.addEventListener('mousewheel', _.bind(this.mousewheel, this), false);
     document.body.addEventListener('DOMMouseScroll', _.bind(this.mousewheel, this), false);
+
+    document.body.addEventListener('keydown', _.bind(this.keyboard, this), false);
 
     window.addEventListener('resize', _.bind(this.setOnResize, this), false);
 
