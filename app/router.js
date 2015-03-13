@@ -139,6 +139,15 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
 
   window.tricks.markActiveLinks();
   window.tricks.clipifyClippers();
+  this.trackClick();
+};
+
+Router.prototype.trackClick = function() {
+  if (!isServer) {
+    if (typeof ga == 'function') {
+      ga('send', 'pageview');
+    }
+  }
 };
 
 Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
