@@ -5,7 +5,7 @@ var _             = require('lodash'),
     THREE         = require('three'),
     helpers       = require('./helpers')().helpers,
     friendlyCats  = require('../config.json').friendlyCats,
-    hostname      = process.env.HOSTNAME || 'localhost', // useless, @todo use envify
+    hostname      = process.env.HOSTNAME || 'orengoldenberg.com', // useless, @todo use envify
     proxyport     = process.env.PROXY_PORT || 7779; // see above
 
 module.exports = Tricks;
