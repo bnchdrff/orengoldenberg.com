@@ -18,7 +18,7 @@ module.exports = function(Handlebars) {
           return vimeo_src.link;
         } else {
           // make our own thumb url... :/
-          return pictures.sizes[0].link.replace(/_\d+x\d+\.jpg$/, '_640x360.jpg');
+          return pictures.sizes[0].link.replace(/_\d+x\d+\.jpg/, '_640x360.jpg');
         }
       } else {
         console.error('no sizes');
