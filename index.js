@@ -2,9 +2,7 @@ var express = require('express'),
     app     = express(),
     port    = process.env.PORT || 7777,
     apiPort = process.env.API_PORT || 7778,
-    proxyPort = process.env.PROXY_PORT || 7779,
     api     = require('./lib/api'),
-    proxy = require('./lib/proxy'),
     routes  = require('./app/routes'),
     Router  = require('./app/router'),
     router  = new Router(routes);
@@ -33,6 +31,4 @@ app.listen(port);
 
 api.listen(apiPort);
 
-proxy.listen(proxyPort);
-
-console.log('cool i am server: ' + 'apiPort: ' + apiPort + ', proxyPort: ' + proxyPort + ', port: ' + port);
+console.log('cool i am server: ' + 'apiPort: ' + apiPort + ', port: ' + port);

@@ -5,8 +5,7 @@ var _             = require('lodash'),
     THREE         = require('three'),
     helpers       = require('./helpers')().helpers,
     friendlyCats  = require('../config.json').friendlyCats,
-    hostname      = process.env.HOSTNAME || 'orengoldenberg.com', // useless, @todo use envify
-    proxyport     = process.env.PROXY_PORT || 7779; // see above
+    hostname      = process.env.HOSTNAME || 'orengoldenberg.com'; // useless, @todo use envify
 
 module.exports = Tricks;
 
@@ -212,8 +211,6 @@ Tricks.prototype.attach = function(cb) {
       img.crossOrigin = "anonymous";
       // @todo read host from conf
       img.src = helpers.thumbnail_large(window.allVideos[thumb_idx].pictures);
-      // use our proxy
-      img.src = img.src.replace('i.vimeocdn.com', hostname + ':' + proxyport).replace('https', 'http');
       var tex = new THREE.Texture(img);
       img.tex = tex;
 
