@@ -58,13 +58,13 @@ Router.prototype.getRouteHandler = function(handler) {
         data = data || {};
         data.isServer = isServer;
 
-        router.renderView(viewPath, data, function(err, html) {
+        router.renderView(viewPath, data, function(err, html, meta) {
           if (err) {
             return handleErr(err);
           }
 
           if (isServer) {
-            router.handleServerRoute(viewPath, html, routeContext.req, routeContext.res);
+            router.handleServerRoute(viewPath, html, meta, routeContext.req, routeContext.res);
           } else {
             router.handleClientRoute(viewPath, html);
           }
@@ -94,8 +94,20 @@ Router.prototype.handleErr = function(err) {
 Router.prototype.renderView = function(viewPath, data, callback) {
   try {
     var template = require(viewsDir + '/' + viewPath + '.hbs'),
-        html     = template(data);
-    callback(null, html);
+        html     = template(data),
+        meta     = {
+          title: 'Oren Goldenberg',
+          description: 'Videos by Oren Goldenberg',
+          image: 'http://orengoldenberg.com:7780/video/457478047_1280x720.jpg?r=pad',
+        };
+
+    if (viewPath === 'video') {
+      meta.title = data.name + ', video by Oren Goldenberg';
+      meta.image = data.pictures.sizes.slice(-1)[0].link;
+      meta.description = data.description;
+    }
+
+    callback(null, html, meta);
   } catch(err) {
     callback(err);
   }
@@ -150,15 +162,17 @@ Router.prototype.trackClick = function() {
   }
 };
 
-Router.prototype.handleServerRoute = function(viewPath, html, req, res) {
+Router.prototype.handleServerRoute = function(viewPath, html, meta, req, res) {
   var self = this;
+
   apiClient.get('/tags.json', function(tags) {
     apiClient.get('/videos.json', function(videos) {
       var locals = {
         body: html,
         tags: tags.body,
         friendlyCats: friendlyCats,
-        allVideos: JSON.stringify(videos.body)
+        allVideos: JSON.stringify(videos.body),
+        meta: meta,
       };
 
       self.wrapWithLayout(locals, function(err, layoutHtml) {
