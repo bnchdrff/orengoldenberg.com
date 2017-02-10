@@ -66,7 +66,7 @@ Router.prototype.getRouteHandler = function(handler) {
           if (isServer) {
             router.handleServerRoute(viewPath, html, meta, routeContext.req, routeContext.res);
           } else {
-            router.handleClientRoute(viewPath, html);
+            router.handleClientRoute(viewPath, html, meta);
           }
         });
       }));
@@ -123,7 +123,7 @@ Router.prototype.wrapWithLayout = function(locals, callback) {
   }
 };
 
-Router.prototype.handleClientRoute = function(viewPath, html) {
+Router.prototype.handleClientRoute = function(viewPath, html, meta) {
   var is_videolist = (viewPath !== 'page' && viewPath !== 'video');
   if (window.tricks.should_do_tricks() && is_videolist) {
     window.tricks.attach(function() {
@@ -148,6 +148,8 @@ Router.prototype.handleClientRoute = function(viewPath, html) {
     document.getElementById('view-container').innerHTML = html;
     document.getElementById('view-container').style.display = 'block';
   }
+
+  document.title = meta.title;
 
   window.tricks.markActiveLinks();
   window.tricks.clipifyClippers();
