@@ -98,7 +98,7 @@ Router.prototype.renderView = function(viewPath, data, callback) {
         meta     = {
           title: 'Oren Goldenberg',
           description: 'Videos by Oren Goldenberg',
-          image: 'http://orengoldenberg.com:7780/video/457478047_1280x720.jpg?r=pad',
+          image: 'http://www.orengoldenberg.com/images/video/457478047_1280x720.jpg?r=pad',
         };
 
     if (viewPath === 'video') {
