@@ -104,7 +104,7 @@ Router.prototype.renderView = function(viewPath, data, callback) {
     if (viewPath === 'video') {
       meta.title = data.name + ', video by Oren Goldenberg';
       meta.image = data.pictures.sizes.slice(-1)[0].link;
-      meta.description = data.description;
+      meta.description = data.description ? data.description : meta.description;
     }
 
     callback(null, html, meta);
